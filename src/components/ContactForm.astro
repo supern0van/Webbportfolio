@@ -1,0 +1,67 @@
+---
+interface Props {
+  services?: string[];
+  submitLabel?: string;
+  successText?: string;
+  serviceLabel?: string;
+}
+
+const {
+  services,
+  submitLabel = "Skicka",
+  successText = "Tack! Vi hör av oss inom en arbetsdag.",
+  serviceLabel = "Vad gäller det?",
+} = Astro.props;
+---
+
+<form class="contact-form" data-demo-form novalidate>
+  <div class="field-row field-row--2">
+    <div class="field">
+      <label for="namn">Namn</label>
+      <input id="namn" name="namn" type="text" autocomplete="name" required />
+    </div>
+    <div class="field">
+      <label for="epost">E-post</label>
+      <input id="epost" name="epost" type="email" autocomplete="email" required />
+    </div>
+  </div>
+
+  {
+    services && services.length > 0 && (
+      <div class="field">
+        <label for="tjanst">{serviceLabel}</label>
+        <select id="tjanst" name="tjanst">
+          {services.map((service) => (
+            <option>{service}</option>
+          ))}
+        </select>
+      </div>
+    )
+  }
+
+  <div class="field">
+    <label for="meddelande">Meddelande</label>
+    <textarea id="meddelande" name="meddelande" rows="4" required></textarea>
+  </div>
+
+  <button class="btn btn-primary" type="submit">{submitLabel}</button>
+  <p class="form-note">
+    Detta är en demoblankett — inget skickas någonstans, den visar bara hur flödet känns.
+  </p>
+  <p class="form-success" data-form-success hidden role="status">{successText}</p>
+</form>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>("[data-demo-form]").forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      const success = form.querySelector<HTMLElement>("[data-form-success]");
+      if (success) success.hidden = false;
+      form.reset();
+    });
+  });
+</script>

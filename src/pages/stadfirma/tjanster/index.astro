@@ -1,0 +1,33 @@
+---
+import StadfirmaLayout from "../../../layouts/StadfirmaLayout.astro";
+import PageHero from "../../../components/PageHero.astro";
+
+const services = [
+  { name: "Hemstäd", text: "Löpande städ av kök, badrum, golv och dammtorkning. Varannan eller var fjärde vecka." },
+  { name: "Flyttstäd", text: "Grundlig städning inför avflyttning, med besiktningsgaranti i 5 dagar." },
+  { name: "Kontorsstäd", text: "Regelbunden städning av kontor och gemensamma ytor, valfri tid på dygnet." },
+  { name: "Storstädning", text: "En engångsinsats: fönster, ugn, kylskåp och andra saker som sällan hinns med." },
+  { name: "Fönsterputs", text: "Ut- och invändig putsning, beställs separat eller tillsammans med annan städ." },
+  { name: "Trappstäd", text: "Städning av trapphus och entréer för bostadsrättsföreningar." },
+];
+---
+
+<StadfirmaLayout title="Tjänster" description="Alla tjänster hos Klarblick Städ.">
+  <PageHero eyebrow="Tjänster" title="Städning för hem, kontor och föreningar" intro="Alla tjänster går att kombinera. Beräkna ett ungefärligt pris direkt i kalkylatorn." />
+
+  <section class="section section--tight">
+    <div class="container grid grid-3">
+      {
+        services.map((service) => (
+          <div class="card">
+            <h2 style="font-size: 1.05rem;">{service.name}</h2>
+            <p style="margin-top: 0.6rem; color: var(--fg-muted);">{service.text}</p>
+          </div>
+        ))
+      }
+    </div>
+    <p style="margin-top: 2rem;">
+      <a class="btn btn-primary" href="/stadfirma/offertkalkylator/">Beräkna pris</a>
+    </p>
+  </section>
+</StadfirmaLayout>

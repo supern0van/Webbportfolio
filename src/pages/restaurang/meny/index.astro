@@ -1,0 +1,59 @@
+---
+import RestaurangLayout from "../../../layouts/RestaurangLayout.astro";
+import PageHero from "../../../components/PageHero.astro";
+
+const courses = [
+  {
+    name: "Förrätt",
+    items: [
+      { name: "Handskalade räkor, brynt smör, dill", price: "145 kr" },
+      { name: "Rostad rotselleri, hasselnöt, gräddfil", price: "115 kr" },
+    ],
+  },
+  {
+    name: "Huvudrätt",
+    items: [
+      { name: "Kalvsylta med nypressad potatis och rårörda lingon", price: "245 kr" },
+      { name: "Ugnsbakad torsk, brynt smörsås, rotsaker", price: "265 kr" },
+      { name: "Rostad blomkål, valnöt, salvia (vegetariskt)", price: "215 kr" },
+    ],
+  },
+  {
+    name: "Dessert",
+    items: [
+      { name: "Äppelkaka, vaniljsås", price: "95 kr" },
+      { name: "Chokladtryffel, havssalt", price: "85 kr" },
+    ],
+  },
+];
+---
+
+<RestaurangLayout title="Meny" description="Säsongsmenyn på Restaurang Björk.">
+  <PageHero
+    eyebrow="Meny"
+    title="Menyn just nu"
+    intro="Uppdateras varje månad efter säsong. Fråga gärna personalen om allergier — allt lagas från grunden."
+  />
+
+  <section class="section section--tight">
+    <div class="container" style="display: grid; gap: 2.5rem; max-width: 42rem;">
+      {
+        courses.map((course) => (
+          <div>
+            <h2 style="font-size: 1.2rem; border-bottom: 1px solid var(--border); padding-bottom: 0.6rem;">
+              {course.name}
+            </h2>
+            <ul style="margin-top: 1rem; display: grid; gap: 0.9rem;">
+              {course.items.map((item) => (
+                <li style="display: flex; justify-content: space-between; gap: 1rem;">
+                  <span>{item.name}</span>
+                  <span style="color: var(--fg-muted); white-space: nowrap;">{item.price}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</RestaurangLayout>

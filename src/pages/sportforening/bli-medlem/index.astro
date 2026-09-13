@@ -1,0 +1,68 @@
+---
+import SportforeningLayout from "../../../layouts/SportforeningLayout.astro";
+import PageHero from "../../../components/PageHero.astro";
+---
+
+<SportforeningLayout title="Bli medlem" description="Bli medlem i IFK Lindholmen.">
+  <PageHero eyebrow="Bli medlem" title="Kom igång direkt" intro="Fyll i formuläret så kontaktar tränaren för aktuellt lag er inom en vecka. Provträning är alltid gratis." compact />
+
+  <section class="section section--tight">
+    <div class="container" style="max-width: 34rem;">
+      <div class="card">
+        <form class="contact-form" data-demo-form novalidate>
+          <div class="field-row field-row--2">
+            <div class="field">
+              <label for="namn">Spelarens namn</label>
+              <input id="namn" name="namn" type="text" required />
+            </div>
+            <div class="field">
+              <label for="fodelsear">Födelseår</label>
+              <input id="fodelsear" name="fodelsear" type="number" min="1950" max="2020" required />
+            </div>
+          </div>
+          <div class="field">
+            <label for="lag">Vilket lag passar bäst?</label>
+            <select id="lag" name="lag" required>
+              <option value="">Välj lag</option>
+              <option>Knatteskola</option>
+              <option>P/F 9–12</option>
+              <option>P/F 13–16</option>
+              <option>Herrar & Damer A</option>
+              <option>Veteranlag</option>
+              <option>Motionsfotboll</option>
+            </select>
+          </div>
+          <div class="field-row field-row--2">
+            <div class="field">
+              <label for="vardnadshavare">Kontaktperson</label>
+              <input id="vardnadshavare" name="vardnadshavare" type="text" required />
+            </div>
+            <div class="field">
+              <label for="telefon">Telefon</label>
+              <input id="telefon" name="telefon" type="tel" required />
+            </div>
+          </div>
+          <button class="btn btn-primary" type="submit">Skicka anmälan</button>
+          <p class="form-note">Demoformulär — inget skickas, det visar bara flödet.</p>
+          <p class="form-success" data-form-success hidden role="status">
+            Tack för anmälan! Ansvarig tränare hör av sig inom en vecka.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+</SportforeningLayout>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>("[data-demo-form]");
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    const success = form.querySelector<HTMLElement>("[data-form-success]");
+    if (success) success.hidden = false;
+    form.reset();
+  });
+</script>

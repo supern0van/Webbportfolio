@@ -1,0 +1,19 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  compact?: boolean;
+}
+
+const { eyebrow, title, intro, compact = false } = Astro.props;
+---
+
+<section class:list={["section", compact && "section--tight"]}>
+  <div class="container">
+    <p class="eyebrow">{eyebrow}</p>
+    <h1 style="font-size: clamp(2.1rem, 4.5vw, 3.2rem); max-width: 40rem;">{title}</h1>
+    <p class="lede" style="margin-top: 1.1rem;">{intro}</p>
+    <slot />
+  </div>
+</section>

@@ -1,0 +1,116 @@
+---
+import FrisorLayout from "../../../layouts/FrisorLayout.astro";
+import PageHero from "../../../components/PageHero.astro";
+---
+
+<FrisorLayout title="Boka tid" description="Boka tid hos Studio Rae direkt online.">
+  <PageHero eyebrow="Boka tid" title="Välj tjänst, datum och tid" intro="Lediga tider visas direkt när ni valt tjänst och datum." compact />
+
+  <section class="section section--tight">
+    <div class="container" style="max-width: 34rem;">
+      <div class="card">
+        <div class="field">
+          <label for="tjanst">Tjänst</label>
+          <select id="tjanst" data-service required>
+            <option value="">Välj tjänst</option>
+            <option value="45">Klippning (45 min)</option>
+            <option value="90">Färg (90 min)</option>
+            <option value="30">Styling (30 min)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="datum">Datum</label>
+          <input id="datum" type="date" data-date required />
+        </div>
+
+        <div data-slots-wrapper hidden>
+          <p style="font-size: 0.9rem; font-weight: 600; margin-bottom: 0.7rem;">Lediga tider</p>
+          <div class="grid grid-4" data-slots style="gap: 0.6rem;"></div>
+        </div>
+
+        <form class="contact-form" data-booking-details hidden style="margin-top: 1.75rem;" novalidate>
+          <input type="hidden" name="tid" data-selected-time />
+          <div class="field-row field-row--2">
+            <div class="field">
+              <label for="namn">Namn</label>
+              <input id="namn" name="namn" type="text" required />
+            </div>
+            <div class="field">
+              <label for="telefon">Telefon</label>
+              <input id="telefon" name="telefon" type="tel" required />
+            </div>
+          </div>
+          <button class="btn btn-primary" type="submit">Bekräfta bokning</button>
+          <p class="form-note">Demoflöde — inget skickas, tiderna är slumpade exempel.</p>
+          <p class="form-success" data-form-success hidden role="status">
+            Tack! Er tid är bokad — en bekräftelse skickas via sms.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+</FrisorLayout>
+
+<script>
+  const serviceSelect = document.querySelector<HTMLSelectElement>("[data-service]");
+  const dateInput = document.querySelector<HTMLInputElement>("[data-date]");
+  const slotsWrapper = document.querySelector<HTMLElement>("[data-slots-wrapper]");
+  const slotsGrid = document.querySelector<HTMLElement>("[data-slots]");
+  const detailsForm = document.querySelector<HTMLFormElement>("[data-booking-details]");
+  const selectedTimeInput = document.querySelector<HTMLInputElement>("[data-selected-time]");
+
+  if (dateInput) {
+    dateInput.min = new Date().toISOString().split("T")[0];
+  }
+
+  function seededSlots(seed: string): string[] {
+    const all = ["09:00", "10:00", "11:00", "12:30", "13:30", "14:30", "15:30", "16:30"];
+    let hash = 0;
+    for (const char of seed) hash = (hash * 31 + char.charCodeAt(0)) >>> 0;
+    return all.filter((_, index) => (hash >> index) % 3 !== 0);
+  }
+
+  function renderSlots() {
+    if (!serviceSelect?.value || !dateInput?.value || !slotsGrid || !slotsWrapper) return;
+    const slots = seededSlots(serviceSelect.value + dateInput.value);
+    slotsGrid.innerHTML = "";
+    detailsForm?.setAttribute("hidden", "");
+
+    if (slots.length === 0) {
+      slotsGrid.innerHTML = '<p class="form-note">Inga lediga tider den dagen — prova ett annat datum.</p>';
+      slotsWrapper.hidden = false;
+      return;
+    }
+
+    slots.forEach((time) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "btn btn-secondary";
+      button.textContent = time;
+      button.addEventListener("click", () => {
+        slotsGrid.querySelectorAll("button").forEach((b) => b.classList.remove("btn-primary"));
+        slotsGrid.querySelectorAll("button").forEach((b) => b.classList.add("btn-secondary"));
+        button.classList.remove("btn-secondary");
+        button.classList.add("btn-primary");
+        if (selectedTimeInput) selectedTimeInput.value = time;
+        detailsForm?.removeAttribute("hidden");
+      });
+      slotsGrid.appendChild(button);
+    });
+
+    slotsWrapper.hidden = false;
+  }
+
+  serviceSelect?.addEventListener("change", renderSlots);
+  dateInput?.addEventListener("change", renderSlots);
+
+  detailsForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (!detailsForm.checkValidity()) {
+      detailsForm.reportValidity();
+      return;
+    }
+    const success = detailsForm.querySelector<HTMLElement>("[data-form-success]");
+    if (success) success.hidden = false;
+  });
+</script>

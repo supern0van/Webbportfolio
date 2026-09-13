@@ -1,0 +1,38 @@
+---
+import HubLayout from "../../layouts/HubLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import ContactForm from "../../components/ContactForm.astro";
+---
+
+<HubLayout
+  title="Kontakt"
+  description="Boka ett samtal med Nova IT om er nästa webbplats."
+>
+  <PageHero
+    eyebrow="Kontakt"
+    title="Berätta vad sajten ska klara av"
+    intro="Skriv några rader om verksamheten och vad besökare ska kunna göra på sajten, så återkommer vi med ett förslag på nivå och nästa steg."
+  />
+
+  <section class="section section--tight">
+    <div class="container grid grid-2" style="align-items: start;">
+      <div class="card">
+        <ContactForm
+          services={["Ny webbplats", "Vidareutveckling av befintlig sajt", "IT-support", "Annat"]}
+          serviceLabel="Vad gäller det?"
+        />
+      </div>
+      <div class="card">
+        <h2 style="font-size: 1.05rem;">Andra vägar in</h2>
+        <ul style="margin-top: 1rem; display: grid; gap: 0.7rem; font-size: 0.92rem; color: var(--fg-muted);">
+          <li>E-post: hej@nova-it.se (exempel)</li>
+          <li>Telefon: 010-123 45 67 (exempel)</li>
+          <li>Vardagar 08–17</li>
+        </ul>
+        <p class="form-note" style="margin-top: 1.5rem;">
+          Kontaktuppgifterna ovan är exempeldata för den här portföljen.
+        </p>
+      </div>
+    </div>
+  </section>
+</HubLayout>

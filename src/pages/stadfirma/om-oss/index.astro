@@ -1,0 +1,24 @@
+---
+import StadfirmaLayout from "../../../layouts/StadfirmaLayout.astro";
+import PageHero from "../../../components/PageHero.astro";
+import Placeholder from "../../../components/Placeholder.astro";
+---
+
+<StadfirmaLayout title="Om oss" description="Om Klarblick Städ.">
+  <PageHero
+    eyebrow="Om oss"
+    title="Samma personal, varje gång"
+    intro="Klarblick Städ grundades 2017. Vi skickar samma person eller team till er varje gång, så att ingen behöver visa runt en ny städare varje månad."
+  />
+
+  <section class="section section--tight">
+    <div class="container grid grid-2" style="align-items: center;">
+      <Placeholder label="Teamet" ratio="4 / 3" variant="accent" />
+      <p style="color: var(--fg-muted);">
+        Alla i teamet är anställda, försäkrade och utbildade i våra rutiner
+        för städkemikalier och källsortering. Vi städar hos privatpersoner,
+        kontor och bostadsrättsföreningar i hela Storgöteborg.
+      </p>
+    </div>
+  </section>
+</StadfirmaLayout>

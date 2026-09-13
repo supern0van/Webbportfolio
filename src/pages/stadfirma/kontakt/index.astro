@@ -1,0 +1,29 @@
+---
+import StadfirmaLayout from "../../../layouts/StadfirmaLayout.astro";
+import PageHero from "../../../components/PageHero.astro";
+import ContactForm from "../../../components/ContactForm.astro";
+---
+
+<StadfirmaLayout title="Kontakt" description="Boka städning hos Klarblick Städ.">
+  <PageHero eyebrow="Kontakt" title="Boka städning" intro="Ange gärna ett pris ni fått fram i kalkylatorn, så går bokningen snabbare." compact />
+
+  <section class="section section--tight">
+    <div class="container grid grid-2" style="align-items: start;">
+      <div class="card">
+        <ContactForm
+          services={["Hemstäd", "Flyttstäd", "Kontorsstäd", "Storstädning", "Övrigt"]}
+          serviceLabel="Vilken tjänst?"
+          submitLabel="Skicka bokningsförfrågan"
+        />
+      </div>
+      <div class="card">
+        <h2 style="font-size: 1.05rem;">Klarblick Städ</h2>
+        <ul style="margin-top: 1rem; display: grid; gap: 0.7rem; font-size: 0.92rem; color: var(--fg-muted);">
+          <li>Backavägen 3, Mölndal (exempel)</li>
+          <li>Mån–fre 07–18</li>
+          <li>boka@klarblickstad.se (exempel)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</StadfirmaLayout>

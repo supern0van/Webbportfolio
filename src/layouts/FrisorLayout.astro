@@ -1,0 +1,60 @@
+---
+import "../styles/tokens-frisor.css";
+import BaseLayout from "./BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import DemoBanner from "../components/DemoBanner.astro";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+
+const navLinks = [
+  { label: "Hem", href: "/frisor/" },
+  { label: "Tjänster & priser", href: "/frisor/tjanster-priser/" },
+  { label: "Galleri", href: "/frisor/galleri/" },
+  { label: "Kontakt", href: "/frisor/kontakt/" },
+];
+---
+
+<BaseLayout
+  title={`${title} — Studio Rae`}
+  description={description}
+  favicon="/favicon-frisor.svg"
+>
+  <DemoBanner industry="frisör & skönhet" />
+  <Header
+    siteName="Studio Rae"
+    homeHref="/frisor/"
+    navLinks={navLinks}
+    currentPath={Astro.url.pathname}
+    ctaLabel="Boka tid"
+    ctaHref="/frisor/boka-tid/"
+  />
+
+  <main id="innehall">
+    <slot />
+  </main>
+
+  <Footer
+    siteName="Studio Rae"
+    tagline="Klippning, färg och styling i lugn, redaktionell miljö."
+    orgLine="Org.nr 559999-0003 (exempel)."
+    columns={[
+      {
+        heading: "Studion",
+        links: [
+          { label: "Tjänster & priser", href: "/frisor/tjanster-priser/" },
+          { label: "Galleri", href: "/frisor/galleri/" },
+        ],
+      },
+      {
+        heading: "Boka",
+        links: [{ label: "Boka tid", href: "/frisor/boka-tid/" }],
+      },
+    ]}
+  />
+</BaseLayout>

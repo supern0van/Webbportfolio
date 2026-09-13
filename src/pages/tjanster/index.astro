@@ -1,0 +1,92 @@
+---
+import HubLayout from "../../layouts/HubLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+
+const tiers = [
+  {
+    name: "Bas",
+    who: "Enskilda företagare och sidoverksamheter",
+    example: "Se exemplet: Elin Karlsson, massageterapeut",
+    exampleHref: "/enkel-foretagare/",
+    includes: [
+      "En sida med allt som behövs: vad ni gör, för vem, och hur man når er",
+      "Fungerar felfritt på mobilen — de flesta hittar er där",
+      "Snabb att lansera, enkel att uppdatera själv senare",
+    ],
+  },
+  {
+    name: "Standard",
+    who: "Verksamheter med flera tjänster eller sidor att visa upp",
+    example: "Se exemplet: Ek & Sten Bygg och Lindqvist & Partners",
+    exampleHref: "/kundtyper/",
+    includes: [
+      "Flera tydligt strukturerade sidor: tjänster, referenser, om er, kontakt",
+      "Formulär för offertförfrågan eller kontakt",
+      "Sökmotorvänlig uppbyggnad från start",
+    ],
+  },
+  {
+    name: "Premium",
+    who: "Verksamheter som vill erbjuda bokning, priser eller beräkningar direkt på sajten",
+    example: "Se exemplet: Studio Rae och Klarblick Städ",
+    exampleHref: "/kundtyper/",
+    includes: [
+      "Interaktiva flöden: bokningsformulär, schemafilter, offertkalkylator",
+      "Allt i Standard, plus funktioner byggda för just er verksamhet",
+      "Fortsatt snabb sajt trots mer funktionalitet",
+    ],
+  },
+];
+---
+
+<HubLayout
+  title="Tjänster"
+  description="Tre tydliga nivåer för webbutveckling hos Nova IT — Bas, Standard och Premium."
+>
+  <PageHero
+    eyebrow="Tjänster"
+    title="Vi möter er där behovet faktiskt ligger"
+    intro="Ingen behöver be om en teknisk lösning — beskriv vad sajten ska klara av så föreslår vi rätt nivå. Alla tre bygger på samma omsorg om innehåll, tydlighet och tillgänglighet."
+  />
+
+  <section class="section section--tight">
+    <div class="container grid grid-3">
+      {
+        tiers.map((tier) => (
+          <div class="card">
+            <p class="badge">{tier.name}</p>
+            <h2 style="margin-top: 0.9rem; font-size: 1.3rem;">{tier.who}</h2>
+            <ul style="margin-top: 1rem; display: grid; gap: 0.6rem;">
+              {tier.includes.map((item) => (
+                <li style="display: flex; gap: 0.6rem; font-size: 0.92rem; color: var(--fg-muted);">
+                  <span aria-hidden="true">–</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <p style="margin-top: 1.25rem;">
+              <a class="btn btn-secondary" href={tier.exampleHref}>
+                {tier.example} →
+              </a>
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section" style="border-top: 1px solid var(--border);">
+    <div class="container">
+      <div class="card" style="border-color: var(--primary); background: var(--bg-alt);">
+        <p style="font-size: 0.95rem;">
+          <strong>Osäker på vilken nivå ni behöver?</strong> Berätta bara vad
+          besökare ska kunna göra på sajten — boka bord, se priser, skicka en
+          offertförfrågan — så landar vi i rätt nivå tillsammans.
+        </p>
+        <p style="margin-top: 1.1rem;">
+          <a class="btn btn-primary" href="/kontakt/">Boka ett samtal</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</HubLayout>
