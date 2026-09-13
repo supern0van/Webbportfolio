@@ -1,6 +1,19 @@
 ---
 import StadfirmaLayout from "../../../layouts/StadfirmaLayout.astro";
 import PageHero from "../../../components/PageHero.astro";
+
+// Mirrors the calculation in the client-side script below, so the
+// statically rendered page already shows the right price for the
+// form's default values instead of a placeholder "0 kr" before JS runs.
+const defaultArea = 65;
+const defaultRatePerSqm = 14; // Hemstäd
+const defaultFrequencyMultiplier = 1; // Varannan vecka
+const defaultIsHome = true;
+
+const formatSek = (value: number) => `${Math.round(value).toLocaleString("sv-SE")} kr`;
+const defaultPrice = Math.max(400, defaultArea * defaultRatePerSqm * defaultFrequencyMultiplier);
+const defaultPriceLabel = formatSek(defaultPrice);
+const defaultRutLabel = formatSek(defaultPrice * 0.5);
 ---
 
 <StadfirmaLayout title="Offertkalkylator" description="Räkna ut ett ungefärligt pris för städning hos Klarblick Städ.">
@@ -38,8 +51,10 @@ import PageHero from "../../../components/PageHero.astro";
 
       <div class="card" style="background: var(--bg-alt);">
         <p class="eyebrow">Ungefärligt pris</p>
-        <p style="font-size: 2.4rem; font-weight: 700;" data-calc-result>0 kr</p>
-        <p class="form-note" data-calc-rut hidden>Efter RUT-avdrag: <strong data-calc-rut-value>0 kr</strong></p>
+        <p style="font-size: 2.4rem; font-weight: 700;" data-calc-result>{defaultPriceLabel}</p>
+        <p class="form-note" data-calc-rut hidden={!defaultIsHome}>
+          Efter RUT-avdrag: <strong data-calc-rut-value>{defaultRutLabel}</strong>
+        </p>
         <p class="form-note" style="margin-top: 1rem;">
           Priset är en uppskattning baserad på schablonvärden och bekräftas
           alltid innan bokning. Minsta debitering är 400 kr per tillfälle.
