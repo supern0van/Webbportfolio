@@ -1,0 +1,117 @@
+---
+import "../../styles/tokens-enkel-foretagare.css";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import DemoBanner from "../../components/DemoBanner.astro";
+import Placeholder from "../../components/Placeholder.astro";
+import ContactForm from "../../components/ContactForm.astro";
+
+const navLinks = [
+  { label: "Om mig", href: "#om-mig" },
+  { label: "Tjänster", href: "#tjanster" },
+  { label: "Kontakt", href: "#kontakt" },
+];
+---
+
+<BaseLayout
+  title="Elin Karlsson — Massageterapeut"
+  description="Elin Karlsson erbjuder klassisk massage och triggerpunktsbehandling i Göteborg. Boka tid direkt."
+  favicon="/favicon-enkel-foretagare.svg"
+>
+  <DemoBanner industry="enskild företagare (Bas-paketet)" />
+  <Header
+    siteName="Elin Karlsson"
+    homeHref="#"
+    navLinks={navLinks}
+    currentPath={Astro.url.pathname}
+    ctaLabel="Boka tid"
+    ctaHref="#kontakt"
+  />
+
+  <main id="innehall">
+    <section class="section">
+      <div class="container grid grid-2" style="align-items: center;">
+        <div>
+          <p class="eyebrow">Massageterapeut, Göteborg</p>
+          <h1 style="font-size: clamp(2.1rem, 4.5vw, 3rem);">Massage som faktiskt hjälper.</h1>
+          <p class="lede" style="margin-top: 1.1rem;">
+            Jag är legitimerad massageterapeut och tar emot i egen lokal på
+            Linnégatan. Klassisk massage, triggerpunktsbehandling och
+            rådgivning kring återkommande spänningar.
+          </p>
+          <p style="margin-top: 2rem;">
+            <a class="btn btn-primary" href="#kontakt">Boka tid</a>
+          </p>
+        </div>
+        <Placeholder label="Behandlingsrum" ratio="4 / 3" variant="primary" />
+      </div>
+    </section>
+
+    <section class="section section--tight" id="om-mig" style="border-top: 1px solid var(--border);">
+      <div class="container" style="max-width: 40rem;">
+        <p class="eyebrow">Om mig</p>
+        <h2 style="font-size: clamp(1.5rem, 3vw, 1.9rem);">10 år bakom händerna</h2>
+        <p style="margin-top: 1rem; color: var(--fg-muted);">
+          Jag har arbetat som massageterapeut sedan 2015, med fokus på
+          spänningsrelaterade besvär i nacke, axlar och rygg. Många av mina
+          kunder kommer regelbundet, andra bokar en enstaka gång inför en
+          tuff period.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section--tight" id="tjanster" style="border-top: 1px solid var(--border);">
+      <div class="container">
+        <p class="eyebrow">Tjänster</p>
+        <div class="grid grid-3" style="margin-top: 1.5rem;">
+          <div class="card">
+            <h3 style="font-size: 1.05rem;">Klassisk massage</h3>
+            <p style="margin-top: 0.5rem; color: var(--fg-muted); font-size: 0.92rem;">60 min — 795 kr</p>
+          </div>
+          <div class="card">
+            <h3 style="font-size: 1.05rem;">Triggerpunktsbehandling</h3>
+            <p style="margin-top: 0.5rem; color: var(--fg-muted); font-size: 0.92rem;">45 min — 695 kr</p>
+          </div>
+          <div class="card">
+            <h3 style="font-size: 1.05rem;">Kort massage</h3>
+            <p style="margin-top: 0.5rem; color: var(--fg-muted); font-size: 0.92rem;">30 min — 495 kr</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="kontakt" style="border-top: 1px solid var(--border);">
+      <div class="container" style="max-width: 34rem;">
+        <p class="eyebrow">Kontakt</p>
+        <h2 style="font-size: clamp(1.5rem, 3vw, 1.9rem);">Boka en tid</h2>
+        <div class="card" style="margin-top: 1.5rem;">
+          <ContactForm
+            services={["Klassisk massage", "Triggerpunktsbehandling", "Kort massage"]}
+            serviceLabel="Vilken behandling?"
+            submitLabel="Skicka bokningsförfrågan"
+          />
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer
+    siteName="Elin Karlsson"
+    tagline="Massageterapeut, Linnégatan 8, Göteborg."
+    orgLine="Enskild firma (exempel)."
+    columns={[
+      {
+        heading: "Sidan",
+        links: [
+          { label: "Om mig", href: "#om-mig" },
+          { label: "Tjänster", href: "#tjanster" },
+        ],
+      },
+      {
+        heading: "Boka",
+        links: [{ label: "Kontakt", href: "#kontakt" }],
+      },
+    ]}
+  />
+</BaseLayout>

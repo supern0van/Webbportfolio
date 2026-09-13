@@ -1,0 +1,25 @@
+---
+import FrisorLayout from "../../../layouts/FrisorLayout.astro";
+import PageHero from "../../../components/PageHero.astro";
+import ContactForm from "../../../components/ContactForm.astro";
+---
+
+<FrisorLayout title="Kontakt" description="Kontakta Studio Rae.">
+  <PageHero eyebrow="Kontakt" title="Frågor innan ni bokar?" intro="Skriv till oss, så svarar vi så snart vi kan mellan kunder." compact />
+
+  <section class="section section--tight">
+    <div class="container grid grid-2" style="align-items: start;">
+      <div class="card">
+        <ContactForm services={["Boka tid", "Fråga om tjänst", "Övrigt"]} serviceLabel="Vad gäller det?" />
+      </div>
+      <div class="card">
+        <h2 style="font-size: 1.05rem;">Studion</h2>
+        <ul style="margin-top: 1rem; display: grid; gap: 0.7rem; font-size: 0.92rem; color: var(--fg-muted);">
+          <li>Linnégatan 22, Göteborg</li>
+          <li>Tis–fre 10–18, lör 10–15</li>
+          <li>hej@studiorae.se (exempel)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</FrisorLayout>

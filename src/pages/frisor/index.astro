@@ -1,0 +1,38 @@
+---
+import FrisorLayout from "../../layouts/FrisorLayout.astro";
+import Placeholder from "../../components/Placeholder.astro";
+---
+
+<FrisorLayout
+  title="Frisör & skönhetssalong"
+  description="Studio Rae erbjuder klippning, färg och styling i lugn, redaktionell miljö."
+>
+  <section class="section">
+    <div class="container grid grid-2" style="align-items: center;">
+      <div>
+        <p class="eyebrow">Studio Rae</p>
+        <h1 style="font-size: clamp(2.3rem, 5vw, 3.6rem); font-style: italic;">Enkelt. Vackert. Ditt.</h1>
+        <p class="lede" style="margin-top: 1.1rem;">
+          Vi tar oss tid att lyssna innan saxen kommer fram. Studio Rae ligger
+          mitt i Linnéstaden och tar emot både stamkunder och förstabesökare.
+        </p>
+        <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
+          <a class="btn btn-primary" href="/frisor/boka-tid/">Boka tid</a>
+          <a class="btn btn-secondary" href="/frisor/tjanster-priser/">Se priser</a>
+        </div>
+      </div>
+      <Placeholder label="Studion" ratio="4 / 5" variant="accent" />
+    </div>
+  </section>
+
+  <section class="section section--tight" style="border-top: 1px solid var(--border);">
+    <div class="container grid grid-3">
+      <Placeholder label="Klippning" ratio="1 / 1" variant="primary" />
+      <Placeholder label="Färg" ratio="1 / 1" variant="accent" />
+      <Placeholder label="Styling" ratio="1 / 1" variant="muted" />
+    </div>
+    <p style="margin-top: 1.75rem; text-align: center;">
+      <a class="btn btn-secondary" href="/frisor/galleri/">Se hela galleriet →</a>
+    </p>
+  </section>
+</FrisorLayout>
