@@ -1,0 +1,30 @@
+---
+import HantverkareLayout from "../../../layouts/HantverkareLayout.astro";
+import PageHero from "../../../components/PageHero.astro";
+---
+
+<HantverkareLayout title="Kontakt" description="Kontaktuppgifter till Ek & Sten Bygg.">
+  <PageHero eyebrow="Kontakt" title="Ring eller maila" intro="Vill ni ha en offert direkt? Använd offertformuläret istället — det går snabbare." compact />
+
+  <section class="section section--tight">
+    <div class="container grid grid-2">
+      <div class="card">
+        <h2 style="font-size: 1.05rem;">Kontor</h2>
+        <ul style="margin-top: 1rem; display: grid; gap: 0.7rem; font-size: 0.92rem; color: var(--fg-muted);">
+          <li>Verkstadsgatan 9, Mölndal</li>
+          <li>031-555 22 33 (exempel)</li>
+          <li>info@ekstenbygg.se (exempel)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2 style="font-size: 1.05rem;">Vill ha en offert?</h2>
+        <p style="margin-top: 0.8rem; color: var(--fg-muted);">
+          Använd offertformuläret så får ni svar snabbare än via mejl.
+        </p>
+        <p style="margin-top: 1.25rem;">
+          <a class="btn btn-primary" href="/hantverkare/offert/">Till offertformuläret</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</HantverkareLayout>

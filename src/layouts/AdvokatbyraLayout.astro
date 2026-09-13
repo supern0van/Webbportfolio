@@ -1,0 +1,60 @@
+---
+import "../styles/tokens-advokatbyra.css";
+import BaseLayout from "./BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import DemoBanner from "../components/DemoBanner.astro";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+
+const navLinks = [
+  { label: "Hem", href: "/advokatbyra/" },
+  { label: "Kompetensområden", href: "/advokatbyra/kompetensomraden/" },
+  { label: "Om oss", href: "/advokatbyra/om-oss/" },
+  { label: "Kontakt", href: "/advokatbyra/kontakt/" },
+];
+---
+
+<BaseLayout
+  title={`${title} — Lindqvist & Partners`}
+  description={description}
+  favicon="/favicon-advokatbyra.svg"
+>
+  <DemoBanner industry="advokatbyrå" />
+  <Header
+    siteName="Lindqvist & Partners"
+    homeHref="/advokatbyra/"
+    navLinks={navLinks}
+    currentPath={Astro.url.pathname}
+    ctaLabel="Kontakta oss"
+    ctaHref="/advokatbyra/kontakt/"
+  />
+
+  <main id="innehall">
+    <slot />
+  </main>
+
+  <Footer
+    siteName="Lindqvist & Partners Advokatbyrå"
+    tagline="Affärsjuridik och privatjuridik med tydliga besked."
+    orgLine="Org.nr 559999-0000 (exempel)."
+    columns={[
+      {
+        heading: "Byrån",
+        links: [
+          { label: "Kompetensområden", href: "/advokatbyra/kompetensomraden/" },
+          { label: "Om oss", href: "/advokatbyra/om-oss/" },
+        ],
+      },
+      {
+        heading: "Kontakt",
+        links: [{ label: "Boka ett möte", href: "/advokatbyra/kontakt/" }],
+      },
+    ]}
+  />
+</BaseLayout>

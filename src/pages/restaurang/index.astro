@@ -1,0 +1,44 @@
+---
+import RestaurangLayout from "../../layouts/RestaurangLayout.astro";
+import Placeholder from "../../components/Placeholder.astro";
+---
+
+<RestaurangLayout
+  title="Restaurang i Göteborg"
+  description="Restaurang Björk serverar säsongsbaserad husmanskost i lugn, varm miljö mitt i Göteborg."
+>
+  <section class="section">
+    <div class="container grid grid-2" style="align-items: center;">
+      <div>
+        <p class="eyebrow">Restaurang Björk</p>
+        <h1 style="font-size: clamp(2.2rem, 4.5vw, 3.3rem);">Husmanskost, gjord med tid.</h1>
+        <p class="lede" style="margin-top: 1.1rem;">
+          Vi lagar mat efter säsong, med råvaror från gårdar utanför staden.
+          Menyn ändras varje månad — det som är gott just nu är det som lagas.
+        </p>
+        <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
+          <a class="btn btn-primary" href="/restaurang/boka-bord/">Boka bord</a>
+          <a class="btn btn-secondary" href="/restaurang/meny/">Se menyn</a>
+        </div>
+      </div>
+      <Placeholder label="Matbord" ratio="4 / 3" variant="primary" />
+    </div>
+  </section>
+
+  <section class="section section--tight" style="border-top: 1px solid var(--border);">
+    <div class="container grid grid-3">
+      <div class="card">
+        <h2 style="font-size: 1.1rem;">Öppettider</h2>
+        <p style="margin-top: 0.6rem; color: var(--fg-muted);">Tis–lör 17–22, sön 13–20. Måndag stängt.</p>
+      </div>
+      <div class="card">
+        <h2 style="font-size: 1.1rem;">Läge</h2>
+        <p style="margin-top: 0.6rem; color: var(--fg-muted);">Södra vägen 4, Göteborg.</p>
+      </div>
+      <div class="card">
+        <h2 style="font-size: 1.1rem;">Bord för fler</h2>
+        <p style="margin-top: 0.6rem; color: var(--fg-muted);">Sällskap över 8 personer — hör av er direkt via kontaktsidan.</p>
+      </div>
+    </div>
+  </section>
+</RestaurangLayout>
