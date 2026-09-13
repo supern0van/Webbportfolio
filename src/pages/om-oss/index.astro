@@ -1,0 +1,50 @@
+---
+import HubLayout from "../../layouts/HubLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+---
+
+<HubLayout
+  title="Om oss"
+  description="Nova IT arbetar med praktisk IT-support och webbutveckling — samma raka, pålitliga arbetssätt oavsett uppdrag."
+>
+  <PageHero
+    eyebrow="Om oss"
+    title="Vi startade med IT-support. Webbplatser är samma hantverk."
+    intro="Nova IT hjälper verksamheter med nätverk, installationer, säkerhet och tydliga supportärenden. Webbutveckling är en naturlig förlängning: samma vilja att förstå vad ni faktiskt behöver, innan vi föreslår en lösning."
+  />
+
+  <section class="section section--tight">
+    <div class="container grid grid-2" style="align-items: start;">
+      <div class="card">
+        <h2 style="font-size: 1.15rem;">Hur vi jobbar</h2>
+        <p style="margin-top: 0.8rem; color: var(--fg-muted);">
+          Vi börjar med ett samtal om vad besökare faktiskt ska kunna göra på
+          sajten — inte vilken teknik som är trendig. Utifrån det föreslår vi
+          en nivå (Bas, Standard eller Premium) och bygger därefter, med
+          löpande avstämning tills sajten är klar att lanseras.
+        </p>
+      </div>
+      <div class="card">
+        <h2 style="font-size: 1.15rem;">Varför exempelsajter</h2>
+        <p style="margin-top: 0.8rem; color: var(--fg-muted);">
+          Istället för att bara beskriva vad vi kan bygga, har vi byggt sju
+          fullständiga demosajter för olika typer av verksamheter. De är
+          fiktiva, men fungerar precis som en riktig sajt skulle göra — testa
+          gärna formulären och filtren.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="border-top: 1px solid var(--border);">
+    <div class="container">
+      <p class="eyebrow">Kontakt</p>
+      <h2 style="font-size: clamp(1.6rem, 3vw, 2rem); max-width: 32rem;">
+        Vill ni prata igenom ert projekt?
+      </h2>
+      <p style="margin-top: 1.5rem;">
+        <a class="btn btn-primary" href="/kontakt/">Boka ett samtal</a>
+      </p>
+    </div>
+  </section>
+</HubLayout>

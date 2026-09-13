@@ -1,0 +1,53 @@
+---
+// A deliberate stand-in for a photo: this project uses no stock or invented
+// "real" photography, so every image spot is an abstract, on-brand tile
+// instead. Keeps demo content honestly demo-like.
+interface Props {
+  label: string;
+  ratio?: string;
+  variant?: "primary" | "accent" | "muted";
+}
+
+const { label, ratio = "4 / 3", variant = "muted" } = Astro.props;
+---
+
+<div class={`placeholder placeholder--${variant}`} style={`aspect-ratio: ${ratio};`}>
+  <span>{label}</span>
+</div>
+
+<style>
+  .placeholder {
+    border-radius: var(--radius);
+    display: flex;
+    align-items: flex-end;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    background:
+      repeating-linear-gradient(
+        135deg,
+        color-mix(in oklab, var(--tone) 12%, var(--bg)) 0px,
+        color-mix(in oklab, var(--tone) 12%, var(--bg)) 2px,
+        transparent 2px,
+        transparent 14px
+      ),
+      color-mix(in oklab, var(--tone) 22%, var(--bg));
+  }
+
+  .placeholder span {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--fg-muted);
+  }
+
+  .placeholder--primary {
+    --tone: var(--primary);
+  }
+
+  .placeholder--accent {
+    --tone: var(--accent);
+  }
+
+  .placeholder--muted {
+    --tone: var(--border);
+  }
+</style>

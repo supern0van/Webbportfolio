@@ -1,0 +1,28 @@
+---
+import "../styles/base.css";
+
+interface Props {
+  title: string;
+  description: string;
+  favicon?: string;
+  lang?: string;
+}
+
+const { title, description, favicon = "/favicon.svg", lang = "sv" } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href={favicon} type="image/svg+xml" />
+    <meta name="robots" content="noindex, nofollow" />
+  </head>
+  <body>
+    <a class="skip-link" href="#innehall">Hoppa till innehållet</a>
+    <slot />
+  </body>
+</html>
