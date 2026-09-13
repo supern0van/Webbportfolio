@@ -1,7 +1,6 @@
 /*
- * Nova IT — the hub's own identity, taken directly from the real Nova IT
- * brand: deep ink-blue base with one restrained signal-blue accent, Inter,
- * calm/capable tone. See docs/brand/nova-it-identity.md in the Nova IT repo.
+ * Nova IT — the hub's own identity: a deep ink-blue base with one
+ * restrained signal-blue accent, Inter, and a calm, capable tone.
  */
 :root {
   --bg: oklch(0.13 0.021 247);
