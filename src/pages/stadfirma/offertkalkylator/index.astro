@@ -1,0 +1,92 @@
+---
+import StadfirmaLayout from "../../../layouts/StadfirmaLayout.astro";
+import PageHero from "../../../components/PageHero.astro";
+---
+
+<StadfirmaLayout title="Offertkalkylator" description="Räkna ut ett ungefärligt pris för städning hos Klarblick Städ.">
+  <PageHero
+    eyebrow="Offertkalkylator"
+    title="Räkna ut ett ungefärligt pris"
+    intro="Fyll i yta, typ av städ och hur ofta ni vill ha det gjort — priset uppdateras direkt. Slutpris bekräftas alltid vid bokning."
+    compact
+  />
+
+  <section class="section section--tight">
+    <div class="container grid grid-2" style="align-items: start;">
+      <div class="card">
+        <div class="field">
+          <label for="yta">Yta (kvm)</label>
+          <input id="yta" type="number" min="10" max="400" value="65" data-calc-area />
+        </div>
+        <div class="field">
+          <label for="typ">Typ av städ</label>
+          <select id="typ" data-calc-type>
+            <option value="14">Hemstäd</option>
+            <option value="22">Flyttstäd</option>
+            <option value="10">Kontorsstäd</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="frekvens">Hur ofta?</label>
+          <select id="frekvens" data-calc-frequency>
+            <option value="1.15">En gång</option>
+            <option value="1" selected>Varannan vecka</option>
+            <option value="1.08">Var fjärde vecka</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="card" style="background: var(--bg-alt);">
+        <p class="eyebrow">Ungefärligt pris</p>
+        <p style="font-size: 2.4rem; font-weight: 700;" data-calc-result>0 kr</p>
+        <p class="form-note" data-calc-rut hidden>Efter RUT-avdrag: <strong data-calc-rut-value>0 kr</strong></p>
+        <p class="form-note" style="margin-top: 1rem;">
+          Priset är en uppskattning baserad på schablonvärden och bekräftas
+          alltid innan bokning. Minsta debitering är 400 kr per tillfälle.
+        </p>
+        <p style="margin-top: 1.5rem;">
+          <a class="btn btn-primary" href="/stadfirma/kontakt/">Boka utifrån detta pris</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</StadfirmaLayout>
+
+<script>
+  const areaInput = document.querySelector<HTMLInputElement>("[data-calc-area]");
+  const typeSelect = document.querySelector<HTMLSelectElement>("[data-calc-type]");
+  const frequencySelect = document.querySelector<HTMLSelectElement>("[data-calc-frequency]");
+  const result = document.querySelector<HTMLElement>("[data-calc-result]");
+  const rutRow = document.querySelector<HTMLElement>("[data-calc-rut]");
+  const rutValue = document.querySelector<HTMLElement>("[data-calc-rut-value]");
+
+  const formatSek = (value: number) =>
+    `${Math.round(value).toLocaleString("sv-SE")} kr`;
+
+  function calculate() {
+    const area = Number(areaInput?.value ?? 0);
+    const ratePerSqm = Number(typeSelect?.value ?? 0);
+    const frequencyMultiplier = Number(frequencySelect?.value ?? 1);
+    const isHome = typeSelect?.selectedOptions[0]?.textContent === "Hemstäd";
+
+    const price = Math.max(400, area * ratePerSqm * frequencyMultiplier);
+
+    if (result) result.textContent = formatSek(price);
+
+    if (rutRow && rutValue) {
+      if (isHome) {
+        rutRow.hidden = false;
+        rutValue.textContent = formatSek(price * 0.5);
+      } else {
+        rutRow.hidden = true;
+      }
+    }
+  }
+
+  [areaInput, typeSelect, frequencySelect].forEach((el) => {
+    el?.addEventListener("input", calculate);
+    el?.addEventListener("change", calculate);
+  });
+
+  calculate();
+</script>
