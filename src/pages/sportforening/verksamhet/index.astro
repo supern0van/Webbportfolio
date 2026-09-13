@@ -1,0 +1,31 @@
+---
+import SportforeningLayout from "../../../layouts/SportforeningLayout.astro";
+import PageHero from "../../../components/PageHero.astro";
+
+const teams = [
+  { name: "Knatteskola", age: "6–8 år", text: "Lekfull introduktion till fotboll, ingen match ännu." },
+  { name: "P/F 9–12", age: "9–12 år", text: "Träning två gånger i veckan, seriespel på våren och hösten." },
+  { name: "P/F 13–16", age: "13–16 år", text: "Högre träningsintensitet, distriktsserie." },
+  { name: "Herrar & Damer A", age: "17+ år", text: "Division 4-lag, träning tre gånger i veckan." },
+  { name: "Veteranlag", age: "35+ år", text: "En träning i veckan, seriespel utan press." },
+  { name: "Motionsfotboll", age: "Alla åldrar", text: "Ingen tävling, bara rörelse och gemenskap." },
+];
+---
+
+<SportforeningLayout title="Verksamhet" description="Alla lag inom IFK Lindholmen.">
+  <PageHero eyebrow="Verksamhet" title="Ett lag för varje ålder" intro="Från knatteskola till veteranlag — alla tränar på Lindholmens IP." />
+
+  <section class="section section--tight">
+    <div class="container grid grid-3">
+      {
+        teams.map((team) => (
+          <div class="card">
+            <p class="badge">{team.age}</p>
+            <h2 style="margin-top: 0.8rem; font-size: 1.05rem;">{team.name}</h2>
+            <p style="margin-top: 0.5rem; color: var(--fg-muted); font-size: 0.9rem;">{team.text}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</SportforeningLayout>

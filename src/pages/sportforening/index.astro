@@ -1,0 +1,50 @@
+---
+import SportforeningLayout from "../../layouts/SportforeningLayout.astro";
+import Placeholder from "../../components/Placeholder.astro";
+---
+
+<SportforeningLayout
+  title="Fotbollsförening i Göteborg"
+  description="IFK Lindholmen är en fotbollsförening för alla åldrar, med lag från 6 år upp till veteranlag."
+>
+  <section class="section">
+    <div class="container grid grid-2" style="align-items: center;">
+      <div>
+        <p class="eyebrow">IFK Lindholmen</p>
+        <h1 style="font-size: clamp(2.2rem, 5vw, 3.4rem); text-transform: uppercase;">
+          Alla är med. Alla utvecklas.
+        </h1>
+        <p class="lede" style="margin-top: 1.1rem;">
+          Sedan 1974 har vi lag för barn, ungdomar och vuxna på Lindholmens
+          IP. Prova på gratis i två veckor innan ni bestämmer er.
+        </p>
+        <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
+          <a class="btn btn-primary" href="/sportforening/bli-medlem/">Bli medlem</a>
+          <a class="btn btn-secondary" href="/sportforening/schema/">Se träningsschema</a>
+        </div>
+      </div>
+      <Placeholder label="Lindholmens IP" ratio="4 / 3" variant="primary" />
+    </div>
+  </section>
+
+  <section class="section section--tight" style="border-top: 1px solid var(--border);">
+    <div class="container grid grid-4">
+      <div class="card" style="text-align: center;">
+        <p style="font-size: 2rem; font-weight: 700;">14</p>
+        <p style="color: var(--fg-muted); font-size: 0.9rem;">Lag</p>
+      </div>
+      <div class="card" style="text-align: center;">
+        <p style="font-size: 2rem; font-weight: 700;">340</p>
+        <p style="color: var(--fg-muted); font-size: 0.9rem;">Medlemmar</p>
+      </div>
+      <div class="card" style="text-align: center;">
+        <p style="font-size: 2rem; font-weight: 700;">6–65</p>
+        <p style="color: var(--fg-muted); font-size: 0.9rem;">Åldersspann</p>
+      </div>
+      <div class="card" style="text-align: center;">
+        <p style="font-size: 2rem; font-weight: 700;">1974</p>
+        <p style="color: var(--fg-muted); font-size: 0.9rem;">Grundades</p>
+      </div>
+    </div>
+  </section>
+</SportforeningLayout>
