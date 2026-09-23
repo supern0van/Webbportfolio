@@ -22,15 +22,18 @@ const { label, ratio = "4 / 3", variant = "muted" } = Astro.props;
     align-items: flex-end;
     padding: 1rem;
     border: 1px solid var(--border);
-    background:
-      repeating-linear-gradient(
-        135deg,
-        color-mix(in oklab, var(--tone) 12%, var(--bg)) 0px,
-        color-mix(in oklab, var(--tone) 12%, var(--bg)) 2px,
-        transparent 2px,
-        transparent 14px
-      ),
-      color-mix(in oklab, var(--tone) 22%, var(--bg));
+    background-color: color-mix(in oklab, var(--tone) 22%, var(--bg));
+    background-image: repeating-linear-gradient(
+      135deg,
+      color-mix(in oklab, var(--tone) 16%, var(--bg)) 0,
+      color-mix(in oklab, var(--tone) 16%, var(--bg)) 12%,
+      transparent 12%,
+      transparent 50%
+    );
+    /* Tile size scales with viewport width instead of staying pixel-fixed,
+       so the diagonal texture reads as a deliberate pattern instead of
+       noise on large hero-sized placeholders. */
+    background-size: clamp(28px, 4vw, 80px) clamp(28px, 4vw, 80px);
   }
 
   .placeholder span {
