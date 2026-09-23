@@ -9,9 +9,18 @@ interface Props {
   tagline: string;
   columns: Column[];
   orgLine: string;
+  senderLine?: string;
+  pitchLine?: string;
 }
 
-const { siteName, tagline, columns, orgLine } = Astro.props;
+const {
+  siteName,
+  tagline,
+  columns,
+  orgLine,
+  senderLine = "Webbportfolio – ett projekt från Nova IT",
+  pitchLine,
+} = Astro.props;
 const year = new Date().getFullYear();
 ---
 
@@ -38,6 +47,13 @@ const year = new Date().getFullYear();
   </div>
   <div class="container site-footer__bottom">
     <span>© {year} {siteName}. {orgLine}</span>
-    <span>Exempelsajt byggd av Nova IT.</span>
+    <span>{senderLine}</span>
   </div>
+  {
+    pitchLine && (
+      <div class="container site-footer__pitch">
+        <p>{pitchLine}</p>
+      </div>
+    )
+  }
 </footer>

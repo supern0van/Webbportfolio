@@ -1,0 +1,199 @@
+project:
+  name: Webbportfolio
+  sender_line: "Webbportfolio - ett projekt från Nova IT"
+  status: "designunderlag"
+  publish: false
+  primary_goal: "Digital utställningslokal för exempelwebbplatser"
+
+navigation:
+  primary:
+    - label: Start
+      target: "/"
+    - label: Webbplatser
+      target: "/webbplatser"
+      dropdown:
+        - label: "Café - demo"
+          target: "/demo/cafe"
+          status: ready_demo
+        - label: "Konsult - nästa demo"
+          target: "/demo/konsult"
+          status: build_next
+        - label: "Lokal service - nästa demo"
+          target: "/demo/lokal-service"
+          status: build_next
+        - label: "Se alla webbplatser"
+          target: "/webbplatser"
+          status: catalog
+    - label: "Så fungerar det"
+      target: "/sa-fungerar-det"
+    - label: Startpriser
+      target: "/startpriser"
+    - label: Kontakt
+      target: "/kontakt"
+
+pages:
+  - id: home
+    path: "/"
+    title: Webbportfolio
+    purpose: "Showroom-startsida"
+    sections:
+      - header
+      - hero
+      - featured_demos
+      - category_index
+      - customization_intro
+      - build_values
+      - starter_prices
+      - contact
+      - footer
+
+  - id: websites
+    path: "/webbplatser"
+    title: Webbplatser
+    purpose: "Översikt över demos och framtida branscher"
+    sections:
+      - intro
+      - demo_grid
+      - category_filters
+      - status_legend
+
+  - id: cafe_demo
+    path: "/demo/cafe"
+    title: "Cafédemo"
+    purpose: "Fiktiv komplett caféwebbplats som visar en branschdemo"
+    source_brief: "hemsidor/01-cafe-kvarterets-koppar.md"
+    status: ready_demo
+    demo_notice: "Konceptdemo skapad av Webbportfolio - ett projekt från Nova IT"
+    internal_demo_bar:
+      - "Tillbaka till Webbportfolio"
+      - "Cafédemo"
+      - "Anpassa sidan"
+    sections:
+      - demo_bar
+      - cafe_header
+      - cafe_hero
+      - cafe_intro
+      - cafe_menu
+      - cafe_hours
+      - cafe_events
+      - cafe_customize
+      - cafe_contact
+      - cafe_map_placeholder
+      - cafe_footer
+
+  - id: frisor_demo
+    path: "/demo/frisor"
+    title: "Frisördemo"
+    purpose: "Fiktiv salongswebbplats med tydligt annorlunda formspråk än café"
+    source_brief: "hemsidor/02-frisor-studio-linje.md"
+    status: brief_ready
+
+  - id: konsult_demo
+    path: "/demo/konsult"
+    title: "Konsultdemo"
+    purpose: "Fiktiv B2B-konsultsida med case, process och förstudieflöde"
+    source_brief: "hemsidor/03-konsult-nordstrategi.md"
+    status: build_next
+
+  - id: hantverk_demo
+    path: "/demo/lokal-service"
+    title: "Lokal servicedemo"
+    purpose: "Fiktiv service- eller hantverkssida med offertflöde och trygghetsbevis"
+    source_brief: "hemsidor/04-hantverk-rakt-rent.md"
+    status: build_next
+
+  - id: traning_demo
+    path: "/demo/traning"
+    title: "Träningsdemo"
+    purpose: "Fiktiv träningsstudio med schema, passfilter och prova-på-flöde"
+    source_brief: "hemsidor/05-traning-pulsverk.md"
+    status: brief_ready
+
+  - id: hotell_demo
+    path: "/demo/hotell"
+    title: "Hotelldemo"
+    purpose: "Fiktivt boutiquehotell med atmosfärisk bokningsresa"
+    source_brief: "hemsidor/06-hotell-vikrum.md"
+    status: brief_ready
+
+  - id: bilvard_demo
+    path: "/demo/bilvard"
+    title: "Bilvårdsdemo"
+    purpose: "Fiktiv bilvårdssida med paket, före/efter och tidsbokningsdemo"
+    source_brief: "hemsidor/07-bilvard-glansverk.md"
+    status: brief_ready
+
+  - id: kultur_demo
+    path: "/demo/kultur"
+    title: "Kulturdemo"
+    purpose: "Fiktiv kulturförening med program, medlemskap och volontärspår"
+    source_brief: "hemsidor/08-kultur-ladan.md"
+    status: brief_ready
+
+  - id: webbshop_demo
+    path: "/demo/webbshop"
+    title: "Webbshopsdemo"
+    purpose: "Fiktiv nischbutik med produktupptäckt, filtrering och varukorgssimulering"
+    source_brief: "hemsidor/09-webbshop-butik-falt.md"
+    status: brief_ready
+
+  - id: tandvard_demo
+    path: "/demo/tandvard"
+    title: "Tandvårdsdemo"
+    purpose: "Fiktiv kliniksida med tillit, tillgänglighet och säker bokningsväg"
+    source_brief: "hemsidor/10-tandvard-tandrum.md"
+    status: brief_ready
+
+  - id: fastighet_demo
+    path: "/demo/fastighet"
+    title: "Fastighetsdemo"
+    purpose: "Fiktiv mäklarsida med objektsökning, områdesguide och visningsintresse"
+    source_brief: "hemsidor/11-fastighet-hemlinjen.md"
+    status: brief_ready
+
+  - id: utbildning_demo
+    path: "/demo/utbildning"
+    title: "Utbildningsdemo"
+    purpose: "Fiktiv kursverksamhet med kurskatalog, nivåval och intresseanmälan"
+    source_brief: "hemsidor/12-utbildning-kursverk.md"
+    status: brief_ready
+
+  - id: how_it_works
+    path: "/sa-fungerar-det"
+    title: "Så fungerar det"
+    purpose: "Förklarar hur demos och anpassningar ska förstås"
+    sections:
+      - showroom_model
+      - customization_model
+      - what_is_simulated
+
+  - id: starter_prices
+    path: "/startpriser"
+    title: Startpriser
+    purpose: "Visar prisnivåer som platshållare"
+    sections:
+      - price_intro
+      - price_levels
+      - add_ons
+      - contact_cta
+
+  - id: contact
+    path: "/kontakt"
+    title: Kontakt
+    purpose: "Intresseanmälan utan känsliga uppgifter"
+    sections:
+      - contact_intro
+      - safe_contact_form_placeholder
+      - sender_note
+
+global_constraints:
+  no_publication_without_approval: true
+  no_dns_changes: true
+  no_sensitive_data: true
+  no_real_cafe_identity: true
+  no_fake_active_integrations: true
+  keep_prices_as_placeholders: true
+  avoid_same_template_for_all_demos: true
+  each_demo_must_have_distinct_layout_tone_and_visual_language: true
+  verify_fictional_names_before_publication: true
+  catalog_uses_categories_instead_of_long_dropdown: true

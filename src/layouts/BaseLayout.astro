@@ -20,6 +20,7 @@ const { title, description, favicon = "/favicon.svg", lang = "sv" } = Astro.prop
     <meta name="description" content={description} />
     <link rel="icon" href={favicon} type="image/svg+xml" />
     <meta name="robots" content="noindex, nofollow" />
+    <slot name="head" />
   </head>
   <body>
     <a class="skip-link" href="#innehall">Hoppa till innehållet</a>

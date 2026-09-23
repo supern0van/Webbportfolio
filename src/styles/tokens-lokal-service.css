@@ -1,0 +1,25 @@
+/*
+ * Rakt & Rent — hantverk/lokal service: vit/grafit/säker gul/klar blå,
+ * robust sans med stora läsbara siffror. Snabb, nyttig, klar — ingen
+ * elegant premiumkänsla, ingen cafévärme, inget konsultabstrakt.
+ */
+:root {
+  --bg: #ffffff;
+  --bg-alt: #e8edf0;
+  --card: #ffffff;
+  --border: #d7dee2;
+  --fg: #24292d;
+  --fg-muted: #5b6469;
+  --primary: #155a8a;
+  --primary-contrast: #ffffff;
+  --accent: #f2c230;
+
+  --font-heading: "Archivo", "Arial Narrow", Arial, sans-serif;
+  --font-body: "Archivo", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radius: 0.25rem;
+  --container-width: 68rem;
+}
+
+html {
+  color-scheme: light;
+}

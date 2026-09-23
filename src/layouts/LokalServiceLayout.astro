@@ -1,0 +1,120 @@
+---
+import "../styles/tokens-lokal-service.css";
+import BaseLayout from "./BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import DemoDock from "../components/DemoDock.astro";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+
+const navLinks = [
+  { label: "Tjänster", href: "/demo/lokal-service/#tjanster" },
+  { label: "Arbetsområde", href: "/demo/lokal-service/#omrade" },
+  { label: "Begär offert", href: "/demo/lokal-service/#offert" },
+];
+---
+
+<BaseLayout
+  title={`${title} — Rakt & Rent`}
+  description={description}
+  favicon="/favicon-lokal-service.svg"
+>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&display=swap"
+    rel="stylesheet"
+    slot="head"
+  />
+
+  <DemoDock demoName="Lokal servicedemo" statusLabel="Färdig demo" backHref="/webbplatser/">
+    <Fragment slot="panel">
+      <p class="eyebrow" style="color: #f5f7f6;">Anpassa sidan</p>
+      <h2 style="color: #fff; font-size: 1.2rem; margin-bottom: 0.25rem;">Välj jobbtyp</h2>
+      <p class="form-note" style="color: rgba(245,247,246,0.75); max-width: 38rem;">
+        Jobbtyp-väljaren visar rätt frågor och underlag inför en offert — utan att skicka något
+        formulär.
+      </p>
+      <div class="dock-options" style="margin-top: 1.25rem;">
+        <button type="button" class="dock-option" aria-pressed="false" data-dock-option data-group="jobbtyp" data-reveal="jobb-renovering">Renovering</button>
+        <button type="button" class="dock-option" aria-pressed="false" data-dock-option data-group="jobbtyp" data-reveal="jobb-akut">Akut reparation</button>
+        <button type="button" class="dock-option" aria-pressed="false" data-dock-option data-group="jobbtyp" data-reveal="jobb-stad">Städning</button>
+        <button type="button" class="dock-option" aria-pressed="false" data-dock-option data-group="jobbtyp" data-reveal="jobb-utomhus">Utomhus/trädgård</button>
+        <button type="button" class="dock-reset" data-dock-reset data-group="jobbtyp">Återställ</button>
+      </div>
+      <div id="jobb-renovering" class="dock-detail" data-detail-group="jobbtyp" hidden>
+        <strong>Renovering</strong>
+        Beskriv gärna: vilket utrymme, ungefärlig storlek, och om ni redan har ritning eller
+        materialval klart.
+      </div>
+      <div id="jobb-akut" class="dock-detail" data-detail-group="jobbtyp" hidden>
+        <strong>Akut reparation</strong>
+        Beskriv gärna: vad som hänt, hur akut det är, och om skadan påverkar boende eller drift just nu.
+      </div>
+      <div id="jobb-stad" class="dock-detail" data-detail-group="jobbtyp" hidden>
+        <strong>Städning</strong>
+        Beskriv gärna: yta i kvadratmeter, engångsjobb eller löpande, och om det gäller flytt eller
+        byggstädning.
+      </div>
+      <div id="jobb-utomhus" class="dock-detail" data-detail-group="jobbtyp" hidden>
+        <strong>Utomhus/trädgård</strong>
+        Beskriv gärna: tomtstorlek, vad som ska göras, och om ni behöver hjälp löpande under
+        säsong.
+      </div>
+
+      <div style="margin-top: 1.75rem;">
+        <p style="font-weight: 600; color: #fff; margin-bottom: 0.6rem;">Akut eller planerat läge</p>
+        <div class="dock-options">
+          <button type="button" class="dock-option" aria-pressed="false" data-dock-option data-group="lage" data-reveal="lage-akut">Akut</button>
+          <button type="button" class="dock-reset" data-dock-reset data-group="lage">Återställ till planerat</button>
+        </div>
+        <div id="lage-akut" class="dock-detail" data-detail-group="lage" hidden>
+          <strong>Akutläge</strong>
+          I en verklig sajt skulle CTA:n växla till en akutväg. Demoläget visar bara texten — inget
+          verkligt telefonnummer visas eller ringer i denna demo.
+        </div>
+      </div>
+
+      <p class="dock-notice">Demo — inga val här kopplar till en verklig tjänst eller skickar data.</p>
+    </Fragment>
+  </DemoDock>
+
+  <Header
+    siteName="Rakt & Rent"
+    homeHref="/demo/lokal-service/"
+    navLinks={navLinks}
+    currentPath={Astro.url.pathname}
+    ctaLabel="Begär offert"
+    ctaHref="/demo/lokal-service/#offert"
+  />
+
+  <main id="innehall">
+    <slot />
+  </main>
+
+  <Footer
+    siteName="Rakt & Rent"
+    tagline="Konceptdemo skapad av Webbportfolio – ett projekt från Nova IT."
+    orgLine="Demo och innehåll är fiktivt."
+    senderLine="Webbportfolio – ett projekt från Nova IT"
+    columns={[
+      {
+        heading: "Lokal servicedemo",
+        links: [
+          { label: "Tjänster", href: "/demo/lokal-service/#tjanster" },
+          { label: "Arbetsområde", href: "/demo/lokal-service/#omrade" },
+        ],
+      },
+      {
+        heading: "Webbportfolio",
+        links: [
+          { label: "Tillbaka till Webbportfolio", href: "/" },
+          { label: "Se alla webbplatser", href: "/webbplatser/" },
+        ],
+      },
+    ]}
+  />
+</BaseLayout>

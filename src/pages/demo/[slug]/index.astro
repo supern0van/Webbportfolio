@@ -1,0 +1,19 @@
+---
+import { briefDemos } from "../../../data/briefDemos";
+import BriefListLayout from "../../../components/brief/BriefListLayout.astro";
+import BriefRecommendLayout from "../../../components/brief/BriefRecommendLayout.astro";
+import BriefVisualLayout from "../../../components/brief/BriefVisualLayout.astro";
+
+export function getStaticPaths() {
+  return briefDemos.map((demo) => ({
+    params: { slug: demo.slug },
+    props: { demo },
+  }));
+}
+
+const { demo } = Astro.props;
+---
+
+{demo.template === "list" && <BriefListLayout demo={demo} />}
+{demo.template === "recommend" && <BriefRecommendLayout demo={demo} />}
+{demo.template === "visual" && <BriefVisualLayout demo={demo} />}

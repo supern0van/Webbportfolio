@@ -1,0 +1,63 @@
+---
+import WebbportfolioLayout from "../../layouts/WebbportfolioLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+---
+<WebbportfolioLayout
+  title="Så fungerar det"
+  description="Så ska demos och anpassningar i Webbportfolio förstås."
+>
+  <PageHero
+    eyebrow="Så fungerar det"
+    title="En utställningslokal, inte en färdig produkt"
+    intro="Webbportfolio är uppbyggt i tre lager: utställningslokalen, branschdemosidorna och de interaktiva val som visar hur en webbplats kan byggas ut."
+  />
+
+  <section class="section section--tight">
+    <div class="container grid grid-3">
+      <div class="card">
+        <p class="badge">1</p>
+        <h2 style="margin-top: 1rem; font-size: 1.05rem;">Webbportfolio är utställningslokalen</h2>
+        <p class="form-note" style="margin-top: 0.6rem;">
+          Den här sajten samlar exempel, förklarar hur de hänger ihop och länkar vidare till varje
+          demo. Den är inte själv ett företag som säljer en tjänst — den visar vad som går att
+          bygga.
+        </p>
+      </div>
+      <div class="card">
+        <p class="badge">2</p>
+        <h2 style="margin-top: 1rem; font-size: 1.05rem;">Branschdemos är utställningsobjekten</h2>
+        <p class="form-note" style="margin-top: 0.6rem;">
+          Varje demo, som Café eller Konsult, är byggd som en egen fristående webbplats med egen
+          layout, ton och bildspråk. När du öppnar en demo ska den kännas som en verklig
+          självständig sajt — inte en sida inuti en annan sida.
+        </p>
+      </div>
+      <div class="card">
+        <p class="badge">3</p>
+        <h2 style="margin-top: 1rem; font-size: 1.05rem;">Anpassningar visar vad som går att bygga ut</h2>
+        <p class="form-note" style="margin-top: 0.6rem;">
+          Varje demo har en eller ett par funktioner du kan prova, till exempel en
+          bokningskalender eller en stilväxling. De visas som tydliga koncept eller simuleringar —
+          aldrig som riktigt inkopplade tjänster.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="border-top: 1px solid var(--border);">
+    <div class="container" style="max-width: 42rem;">
+      <p class="eyebrow">Vad är simulerat</p>
+      <h2 style="font-size: clamp(1.5rem, 3vw, 2rem);">Ärlighet om vad som är på riktigt</h2>
+      <ul style="margin-top: 1.5rem; display: grid; gap: 0.9rem; color: var(--fg-muted);">
+        <li>Bokning, nyhetsbrev och beställningsknappar skickar inget och kopplar inte till en extern tjänst.</li>
+        <li>Kundomdömen och case i demos är fiktiva och märks som exempel.</li>
+        <li>Kartor är platshållare — ingen verklig adress eller karttjänst är inkopplad.</li>
+        <li>Kontaktformulär i demos är demoblanketter som inte skickar in uppgifter.</li>
+        <li>Priser är platshållare (<code>X XXX kr</code>) tills riktiga priser beslutas.</li>
+      </ul>
+      <p style="margin-top: 1.75rem;">
+        <a class="btn btn-secondary" href="/webbplatser/">Se alla webbplatser →</a>
+      </p>
+    </div>
+  </section>
+</WebbportfolioLayout>

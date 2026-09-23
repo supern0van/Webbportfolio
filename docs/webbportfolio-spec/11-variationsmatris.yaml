@@ -1,0 +1,138 @@
+variation_rules:
+  goal: "Demosidorna ska bevisa att Webbportfolio kan skapa olika typer av webbplatser, inte samma mall i olika färger."
+  shared_quality:
+    - responsivitet
+    - tillgänglighet
+    - tydlig information
+    - stabil navigation
+    - möjlighet att lägga till funktioner
+    - diskret demomärkning
+  forbidden_repetition:
+    - samma hero-layout på alla demos
+    - samma kortgrid på alla demos
+    - samma färglogik på alla demos
+    - samma CTA-placering på alla demos
+    - samma textton på alla demos
+    - samma bildbeskärning på alla demos
+    - samma sektionsordning på alla demos
+
+websites:
+  - id: cafe-kvarterets-koppar
+    file: "hemsidor/01-cafe-kvarterets-koppar.md"
+    industry: "Café"
+    first_screen: "Stor varm bild med inbjudande text och mjuka CTA-knappar"
+    layout_model: "Redaktionell startsida med meny, öppettider och evenemangsflöde"
+    tone: "personlig, varm, lokal"
+    palette: "varma neutrala toner, kaffe, grädde, mjuk grön accent"
+    primary_conversion: "besök caféet / se meny / upptäck evenemang"
+    unique_feature: "stilbyte mellan varm, modern och exklusiv cafékänsla"
+
+  - id: frisor-studio-linje
+    file: "hemsidor/02-frisor-studio-linje.md"
+    industry: "Frisör"
+    first_screen: "Asymmetrisk modeinspirerad layout med behandlingar direkt synliga"
+    layout_model: "Visuell salongslook med behandlingar, stylister och före/efter"
+    tone: "självsäker, stilmedveten, personlig"
+    palette: "ljus bas, svart typografi, dämpad rosé eller kopparaccent"
+    primary_conversion: "boka tid"
+    unique_feature: "behandlingsväljare som ändrar rekommenderad tid och stil"
+
+  - id: konsult-nordstrategi
+    file: "hemsidor/03-konsult-nordstrategi.md"
+    industry: "Konsult"
+    first_screen: "Textdriven expertpositionering med tre tydliga affärsproblem"
+    layout_model: "B2B-case, process och beslutsstöd"
+    tone: "saklig, senior, tydlig"
+    palette: "grafit, varmvit, djup blågrön accent"
+    primary_conversion: "boka förstudie"
+    unique_feature: "problemväljare som visar relevant erbjudande och case"
+
+  - id: hantverk-rakt-rent
+    file: "hemsidor/04-hantverk-rakt-rent.md"
+    industry: "Lokal service / hantverk"
+    first_screen: "Direkt problem-lösning-kontakt med synliga jour- och offertvägar"
+    layout_model: "Praktisk servicesida med förtroendebevis och offertflöde"
+    tone: "rak, trygg, konkret"
+    palette: "vit, mörk grafit, säker gul eller blå accent"
+    primary_conversion: "begär offert / ring"
+    unique_feature: "jobbtyp-väljare som visar vad kunden behöver förbereda"
+
+  - id: traning-pulsverk
+    file: "hemsidor/05-traning-pulsverk.md"
+    industry: "Träningsstudio"
+    first_screen: "Kraftfull rubrik, rörelsebild, veckans pass och prova-på direkt"
+    layout_model: "Schema- och medlemskapsdriven sida"
+    tone: "energisk, peppande, tydlig"
+    palette: "ljus eller mörk sportbas med stark lime/röd accent"
+    primary_conversion: "boka prova-på-pass"
+    unique_feature: "passfilter för styrka, kondition och rörlighet"
+
+  - id: hotell-vikrum
+    file: "hemsidor/06-hotell-vikrum.md"
+    industry: "Boutiquehotell"
+    first_screen: "Fullbleed bild, lågmäld premiumcopy och bokningsruta som demo"
+    layout_model: "Atmosfärisk bokningsresa med rum och upplevelser"
+    tone: "stillsam, sinnlig, premium"
+    palette: "ljus sten, havsgrå, varm mässing"
+    primary_conversion: "kontrollera tillgänglighet som demo"
+    unique_feature: "rumsväljare och säsongspaket utan verklig bokning"
+
+  - id: bilvard-glansverk
+    file: "hemsidor/07-bilvard-glansverk.md"
+    industry: "Bilvård"
+    first_screen: "Före/efter-resultat och paketväljare ovanför vikningen"
+    layout_model: "Resultat- och paketdriven servicesida"
+    tone: "noggrann, teknisk, premium"
+    palette: "mörk grafit, vit, metallisk blå eller silveraccent"
+    primary_conversion: "välj bilvårdspaket"
+    unique_feature: "paketjämförelse och före/efter-modul"
+
+  - id: kultur-ladan
+    file: "hemsidor/08-kultur-ladan.md"
+    industry: "Kulturförening"
+    first_screen: "Kommande program och gemenskap framför säljbudskap"
+    layout_model: "Kalender, berättelse, medlemskap och volontärspår"
+    tone: "mänsklig, varm, lokal, inkluderande"
+    palette: "papperston, mörk text, affischröd eller blå accent"
+    primary_conversion: "gå på arrangemang / bli medlem"
+    unique_feature: "programfilter och volontärintresse som demo"
+
+  - id: webbshop-butik-falt
+    file: "hemsidor/09-webbshop-butik-falt.md"
+    industry: "Webbshop"
+    first_screen: "Kurerad produktvägg med materialfilter och ett utvalt objekt i närbild"
+    layout_model: "Taktil handelsyta med produktindex, detaljblad och varukorgssimulering"
+    tone: "nyfiken, precis, vardagsnära"
+    palette: "kritvit, bläckblå, rå linnebeige och koboltaccent"
+    primary_conversion: "utforska produkt / lägg i demokorg"
+    unique_feature: "material- och användningsfilter som omformar produkturvalet"
+
+  - id: tandvard-tandrum
+    file: "hemsidor/10-tandvard-tandrum.md"
+    industry: "Tandvård"
+    first_screen: "Två tydliga vägar för planerad tid och akuta besvär med lugn orientering"
+    layout_model: "Förtroendedriven vårdguide med behandlingar, förberedelser och tillgänglighet"
+    tone: "lugn, rak, omtänksam"
+    palette: "mineralvit, djup petrol, klar himmelsblå och varm grå"
+    primary_conversion: "välj rätt kontaktväg"
+    unique_feature: "behovsväljare som visar nästa steg utan att samla hälsodata"
+
+  - id: fastighet-hemlinjen
+    file: "hemsidor/11-fastighet-hemlinjen.md"
+    industry: "Fastighetsförmedling"
+    first_screen: "Horisontell objektlista med område, boendetyp och nästa visning i fokus"
+    layout_model: "Arkitektoniskt objektindex med områdesguide och jämförelse"
+    tone: "transparent, lokal, kunnig"
+    palette: "benvit, tegelröd, mörk grönsvart och kartblå"
+    primary_conversion: "se objekt / anmäl visningsintresse som demo"
+    unique_feature: "områdes- och livsstilsfilter för helt fiktiva objekt"
+
+  - id: utbildning-kursverk
+    file: "hemsidor/12-utbildning-kursverk.md"
+    industry: "Utbildning"
+    first_screen: "Val mellan tre lärvägar med nivå, tidsåtgång och mål direkt synliga"
+    layout_model: "Progressionskarta med kurskatalog, schema och lärandemål"
+    tone: "pedagogisk, konkret, uppmuntrande"
+    palette: "ljus gråblå, marin, solgul och lila markör"
+    primary_conversion: "hitta kurs / visa intresse som demo"
+    unique_feature: "nivåväljare som bygger en rekommenderad lärväg"

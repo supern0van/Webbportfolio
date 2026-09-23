@@ -1,0 +1,53 @@
+/*
+ * Kvarterets Koppar — café: gräddvit/kaffebrun/salviagrön, mjuk serif för
+ * namnet, humanistisk sans för meny och tider. Tre stilvarianter (varm,
+ * modern, exklusiv) väljs via [data-cafe-style] på <html> från demo-dockan.
+ */
+:root {
+  --bg: #f6f0e7;
+  --bg-alt: #efe4d2;
+  --card: #fffdfc;
+  --border: #e3d5bf;
+  --fg: #3a241b;
+  --fg-muted: #7a6656;
+  --primary: #6e8062;
+  --primary-contrast: #fffdfc;
+  --accent: #d8a56b;
+
+  --font-heading: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-body: "Karla", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radius: 1rem;
+  --container-width: 72rem;
+}
+
+html {
+  color-scheme: light;
+}
+
+/* Modern: renare layout, mer kontrast, mindre dekor. */
+:root[data-cafe-style="modern"] {
+  --bg: #fffdfc;
+  --bg-alt: #f3efe9;
+  --card: #ffffff;
+  --border: #ddd3c4;
+  --fg: #241608;
+  --fg-muted: #6b5c4e;
+  --primary: #3a241b;
+  --primary-contrast: #fffdfc;
+  --accent: #6e8062;
+  --radius: 0.4rem;
+}
+
+/* Exklusiv: mörkare detaljer, mer premiumkänsla, återhållsam copy. */
+:root[data-cafe-style="exklusiv"] {
+  --bg: #2a1b12;
+  --bg-alt: #3a241b;
+  --card: #332217;
+  --border: #4a362a;
+  --fg: #f6f0e7;
+  --fg-muted: #d8c9b8;
+  --primary: #d8a56b;
+  --primary-contrast: #2a1b12;
+  --accent: #d8a56b;
+  --radius: 0.6rem;
+}

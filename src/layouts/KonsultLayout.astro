@@ -1,0 +1,102 @@
+---
+import "../styles/tokens-konsult.css";
+import BaseLayout from "./BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import DemoDock from "../components/DemoDock.astro";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+
+const navLinks = [
+  { label: "Hem", href: "/demo/konsult/" },
+  { label: "Arbetssätt", href: "/demo/konsult/#process" },
+  { label: "Case", href: "/demo/konsult/#case" },
+  { label: "Kontakt", href: "/demo/konsult/#kontakt" },
+];
+---
+
+<BaseLayout
+  title={`${title} — Nordstrategi`}
+  description={description}
+  favicon="/favicon-konsult.svg"
+>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet"
+    slot="head"
+  />
+
+  <DemoDock demoName="Konsultdemo" statusLabel="Färdig demo" backHref="/webbplatser/">
+    <Fragment slot="panel">
+      <p class="eyebrow" style="color: #f5f7f6;">Anpassa sidan</p>
+      <h2 style="color: #fff; font-size: 1.2rem; margin-bottom: 0.25rem;">Välj det problem ni känner igen</h2>
+      <p class="form-note" style="color: rgba(245,247,246,0.75); max-width: 38rem;">
+        Problemväljaren omformar vilket erbjudande, case och vilka förstudiefrågor som visas.
+        Ingen uppgift skickas eller sparas.
+      </p>
+      <div class="dock-options" style="margin-top: 1.25rem;">
+        <button type="button" class="dock-option" aria-pressed="false" data-dock-option data-group="problem" data-reveal="problem-prioritering">Otydlig prioritering</button>
+        <button type="button" class="dock-option" aria-pressed="false" data-dock-option data-group="problem" data-reveal="problem-processer">Svaga processer</button>
+        <button type="button" class="dock-option" aria-pressed="false" data-dock-option data-group="problem" data-reveal="problem-kundresa">Splittrad kundresa</button>
+        <button type="button" class="dock-reset" data-dock-reset data-group="problem">Återställ</button>
+      </div>
+      <div id="problem-prioritering" class="dock-detail" data-detail-group="problem" hidden>
+        <strong>Erbjudande: Prioriteringsmodell</strong>
+        Relevant case: <em>Exempelcase — tillväxtbolag fick en tydlig kvartalsprioritering på fyra veckor.</em>
+        Fråga inför förstudie: Vilka tre beslut väntar just nu på tydligare underlag?
+      </div>
+      <div id="problem-processer" class="dock-detail" data-detail-group="problem" hidden>
+        <strong>Erbjudande: Processöversyn</strong>
+        Relevant case: <em>Exempelcase — färre handoffs gav kortare ledtid i leveranskedjan.</em>
+        Fråga inför förstudie: Var i flödet tappar ni mest tid idag?
+      </div>
+      <div id="problem-kundresa" class="dock-detail" data-detail-group="problem" hidden>
+        <strong>Erbjudande: Kundresekartläggning</strong>
+        Relevant case: <em>Exempelcase — samlad kundresa minskade antal kontaktvägar från sex till tre.</em>
+        Fråga inför förstudie: Var upplever kunder mest friktion idag?
+      </div>
+      <p class="dock-notice">Exempelcase — fiktiva resultat, presenteras inte som verkliga kundutfall.</p>
+    </Fragment>
+  </DemoDock>
+
+  <Header
+    siteName="Nordstrategi"
+    homeHref="/demo/konsult/"
+    navLinks={navLinks}
+    currentPath={Astro.url.pathname}
+    ctaLabel="Boka förstudie"
+    ctaHref="/demo/konsult/#kontakt"
+  />
+
+  <main id="innehall">
+    <slot />
+  </main>
+
+  <Footer
+    siteName="Nordstrategi"
+    tagline="Konceptdemo skapad av Webbportfolio – ett projekt från Nova IT."
+    orgLine="Demo och innehåll är fiktivt."
+    senderLine="Webbportfolio – ett projekt från Nova IT"
+    columns={[
+      {
+        heading: "Konsultdemo",
+        links: [
+          { label: "Arbetssätt", href: "/demo/konsult/#process" },
+          { label: "Case", href: "/demo/konsult/#case" },
+        ],
+      },
+      {
+        heading: "Webbportfolio",
+        links: [
+          { label: "Tillbaka till Webbportfolio", href: "/" },
+          { label: "Se alla webbplatser", href: "/webbplatser/" },
+        ],
+      },
+    ]}
+  />
+</BaseLayout>

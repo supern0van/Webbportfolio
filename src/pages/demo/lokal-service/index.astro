@@ -1,0 +1,140 @@
+---
+import LokalServiceLayout from "../../../layouts/LokalServiceLayout.astro";
+import Placeholder from "../../../components/Placeholder.astro";
+import ContactForm from "../../../components/ContactForm.astro";
+
+const services = [
+  { title: "Renovering", text: "Kök, badrum och mindre ombyggnationer." },
+  { title: "Reparation", text: "Akuta och planerade lagningar inomhus och utomhus." },
+  { title: "Städning", text: "Engångsstädning, flyttstäd och byggstäd." },
+  { title: "Utomhus/trädgård", text: "Skötsel, anläggning och säsongsjobb." },
+];
+
+const steps = [
+  { step: "1", title: "Beskriv jobbet", text: "Berätta kort vad som ska göras och när." },
+  { step: "2", title: "Vi återkommer", text: "Ni får en tidsuppskattning och nästa steg." },
+  { step: "3", title: "Vi utför", text: "Arbetet planeras och genomförs enligt överenskommelse." },
+  { step: "4", title: "Avstämning", text: "Ni går igenom resultatet innan jobbet räknas som klart." },
+];
+
+const reviews = [
+  { quote: "Kom precis när de sa och lämnade allt städat efter sig.", tag: "Exempelomdöme" },
+  { quote: "Tydligt om vad som ingick redan innan de började.", tag: "Exempelomdöme" },
+];
+
+const checklist = [
+  "Vad ska göras, så konkret som möjligt",
+  "Ungefärlig yta eller omfattning",
+  "Önskad tidsram",
+  "Eventuella begränsningar (tillträde, material, budget)",
+];
+---
+
+<LokalServiceLayout
+  title="Rakt & Rent"
+  description="När jobbet behöver bli gjort ordentligt — en servicedemo från Webbportfolio."
+>
+  <section class="section" style="padding-top: clamp(2.5rem, 6vw, 5rem);">
+    <div class="container" style="max-width: 40rem;">
+      <p class="eyebrow">Rakt & Rent · konceptdemo</p>
+      <h1 style="font-size: clamp(2.2rem, 5vw, 3.2rem);">När jobbet behöver bli gjort ordentligt.</h1>
+      <p class="lede" style="margin-top: 1rem; color: var(--fg);">
+        En servicedemo för verksamheter som behöver visa tjänster, arbetsområde, förtroende och
+        snabb kontakt.
+      </p>
+      <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
+        <a class="btn btn-primary" href="#offert">Begär offert</a>
+        <a class="btn btn-secondary" href="#tjanster">Se tjänster</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="tjanster" class="section section--tight" style="border-top: 1px solid var(--border);">
+    <div class="container">
+      <p class="eyebrow">Tjänsteområden</p>
+      <ul class="grid grid-4" style="margin-top: 1.5rem;">
+        {
+          services.map((s) => (
+            <li class="card" style="list-style: none;">
+              <strong>{s.title}</strong>
+              <p class="form-note" style="margin-top: 0.4rem;">{s.text}</p>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="form-note" style="margin-top: 1.25rem;">
+        Öppna "Anpassa sidan" högst upp och välj jobbtyp — rätt frågor och underlag visas direkt.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="border-top: 1px solid var(--border); background: var(--bg-alt);">
+    <div class="container">
+      <p class="eyebrow">Så går ett uppdrag till</p>
+      <div class="grid grid-4" style="margin-top: 1.75rem;">
+        {
+          steps.map((s) => (
+            <div class="card" style="background: var(--card);">
+              <span style="font-size: 1.6rem; font-weight: 700; color: var(--primary);">{s.step}</span>
+              <h3 style="margin-top: 0.6rem; font-size: 1rem;">{s.title}</h3>
+              <p class="form-note" style="margin-top: 0.4rem;">{s.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight" style="border-top: 1px solid var(--border);">
+    <div class="container grid grid-2">
+      {
+        reviews.map((r) => (
+          <div class="card">
+            <p style="font-style: italic;">"{r.quote}"</p>
+            <p class="badge" style="margin-top: 0.9rem;">{r.tag}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section id="omrade" class="section" style="border-top: 1px solid var(--border); background: var(--bg-alt);">
+    <div class="container grid grid-2" style="align-items: center;">
+      <div>
+        <p class="eyebrow">Serviceområde</p>
+        <h2 style="font-size: clamp(1.5rem, 3vw, 2rem);">Vi arbetar lokalt</h2>
+        <p class="lede" style="margin-top: 0.75rem; color: var(--fg);">
+          Exempeltäckning för demon: centralorten och kringliggande områden inom cirka 3 mil.
+        </p>
+      </div>
+      <Placeholder label="Serviceområde — exempelkarta" ratio="4 / 3" variant="accent" />
+    </div>
+  </section>
+
+  <section id="offert" class="section" style="border-top: 1px solid var(--border);">
+    <div class="container grid grid-2" style="align-items: start;">
+      <div>
+        <p class="eyebrow">Checklista inför offert</p>
+        <h2 style="font-size: clamp(1.5rem, 3vw, 2rem);">Så förbereder ni er</h2>
+        <ul style="margin-top: 1.5rem; display: grid; gap: 0.7rem;">
+          {
+            checklist.map((item) => (
+              <li style="display: flex; gap: 0.6rem; align-items: baseline;">
+                <span aria-hidden="true" style="color: var(--primary); font-weight: 700;">✓</span>
+                <span>{item}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="card">
+        <ContactForm
+          services={["Renovering", "Reparation", "Städning", "Utomhus/trädgård"]}
+          serviceLabel="Jobbtyp"
+          submitLabel="Begär offert"
+          successText="Tack! Det här är en demo — ingen offert har skickats."
+        />
+      </div>
+    </div>
+  </section>
+</LokalServiceLayout>

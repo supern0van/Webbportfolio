@@ -173,6 +173,25 @@ button {
   flex-shrink: 0;
 }
 
+.site-header__brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.site-header__brand-name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+.site-header__brand-sub {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.01em;
+  color: var(--fg-muted);
+}
+
 .site-header__nav {
   display: none;
 }
@@ -461,16 +480,202 @@ button {
   justify-content: space-between;
 }
 
-.demo-banner {
-  background: var(--primary);
-  color: var(--primary-contrast);
+.site-footer__pitch {
+  padding-bottom: 1.5rem;
   font-size: 0.85rem;
-  text-align: center;
-  padding: 0.55rem 1rem;
+  color: var(--fg-muted);
+  font-style: italic;
 }
 
-.demo-banner a {
-  color: inherit;
+/* ---------- Demo dock ---------- */
+
+.demo-dock {
+  background: var(--ink, #17212b);
+  color: #f5f7f6;
+  font-size: 0.85rem;
+}
+
+.demo-dock__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-block: 0.6rem;
+}
+
+.demo-dock__back {
+  color: #f5f7f6;
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.demo-dock__back:hover {
+  opacity: 1;
   text-decoration: underline;
+}
+
+.demo-dock__name {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   font-weight: 600;
+  margin-inline: auto;
+}
+
+.demo-dock__name .badge {
+  background: rgba(245, 247, 246, 0.12);
+  border-color: rgba(245, 247, 246, 0.3);
+  color: #f5f7f6;
+}
+
+.demo-dock__toggle {
+  font: inherit;
+  font-weight: 600;
+  color: #17212b;
+  background: #f5f7f6;
+  border: none;
+  border-radius: 999px;
+  padding: 0.45rem 1rem;
+  cursor: pointer;
+}
+
+.demo-dock__panel {
+  background: #0f151c;
+  border-top: 1px solid rgba(245, 247, 246, 0.15);
+}
+
+.demo-dock__panel[hidden] {
+  display: none;
+}
+
+.demo-dock__panel-inner {
+  padding-block: 1.5rem;
+}
+
+.dock-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.dock-option {
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #f5f7f6;
+  background: rgba(245, 247, 246, 0.08);
+  border: 1px solid rgba(245, 247, 246, 0.25);
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.dock-option[aria-pressed="true"] {
+  background: #2855d9;
+  border-color: #2855d9;
+  color: #ffffff;
+}
+
+.dock-option:focus-visible {
+  outline: 2px solid #f5f7f6;
+  outline-offset: 2px;
+}
+
+.dock-reset {
+  font: inherit;
+  font-size: 0.85rem;
+  color: rgba(245, 247, 246, 0.75);
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0.25rem 0;
+}
+
+.dock-detail {
+  margin-top: 1rem;
+  padding: 1rem 1.2rem;
+  border-radius: var(--radius, 0.5rem);
+  background: rgba(245, 247, 246, 0.06);
+  border: 1px solid rgba(245, 247, 246, 0.15);
+  color: rgba(245, 247, 246, 0.92);
+  font-size: 0.92rem;
+  max-width: 42rem;
+}
+
+.dock-detail[hidden] {
+  display: none;
+}
+
+.dock-detail strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: #ffffff;
+}
+
+.dock-notice {
+  margin-top: 0.75rem;
+  font-size: 0.78rem;
+  color: rgba(245, 247, 246, 0.6);
+}
+
+/* ---------- Chip selector (light-context equivalent of .dock-option) ----------
+   Same aria-pressed interaction pattern as the demo dock, but themed with the
+   page's own tokens instead of hardcoded dark colors, for use directly on
+   ordinary (light) pages such as the brief previews. */
+
+.chip {
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--fg);
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.chip[aria-pressed="true"] {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--primary-contrast);
+}
+
+.chip-reset {
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--fg-muted);
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0.25rem 0;
+}
+
+.chip-detail {
+  margin-top: 1rem;
+  padding: 1rem 1.2rem;
+  border-radius: var(--radius, 0.5rem);
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  color: var(--fg);
+  font-size: 0.92rem;
+  max-width: 42rem;
+}
+
+.chip-detail[hidden] {
+  display: none;
+}
+
+.chip-detail strong {
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.chip-notice {
+  margin-top: 0.75rem;
+  font-size: 0.78rem;
+  color: var(--fg-muted);
 }
