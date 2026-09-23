@@ -619,3 +619,63 @@ button {
   font-size: 0.78rem;
   color: rgba(245, 247, 246, 0.6);
 }
+
+/* ---------- Chip selector (light-context equivalent of .dock-option) ----------
+   Same aria-pressed interaction pattern as the demo dock, but themed with the
+   page's own tokens instead of hardcoded dark colors, for use directly on
+   ordinary (light) pages such as the brief previews. */
+
+.chip {
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--fg);
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.chip[aria-pressed="true"] {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--primary-contrast);
+}
+
+.chip-reset {
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--fg-muted);
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0.25rem 0;
+}
+
+.chip-detail {
+  margin-top: 1rem;
+  padding: 1rem 1.2rem;
+  border-radius: var(--radius, 0.5rem);
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  color: var(--fg);
+  font-size: 0.92rem;
+  max-width: 42rem;
+}
+
+.chip-detail[hidden] {
+  display: none;
+}
+
+.chip-detail strong {
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.chip-notice {
+  margin-top: 0.75rem;
+  font-size: 0.78rem;
+  color: var(--fg-muted);
+}

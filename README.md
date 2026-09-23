@@ -45,6 +45,17 @@ olika ut, inte extra markup.
 - `build_next` — nästa demos i tur att byggas kompletta.
 - `brief_ready` — genomarbetat underlag och katalogkort, men ännu ingen full demo.
 
+## Anti-mall-regel
+
+Max tre sidor får dela exakt samma strukturella mall. De nio `brief_ready`-sidorna
+(`src/pages/demo/[slug]/index.astro`) använder tre distinkta mallar om tre sidor vardera
+(`src/components/brief/BriefListLayout.astro`, `BriefRecommendLayout.astro`,
+`BriefVisualLayout.astro`, valda via `template`-fältet i `src/data/briefDemos.ts`). Varje sidas
+funktionsinslag ska matcha branschens egen brief ordagrant — inte en påhittad ersättare — så det
+känns branschäkta (en frisörsajt utan bokningskänsla, en fastighetssajt utan filter osv. läses
+som fel). Samma regel gäller framtida sidor: bygg inte en fjärde kopia av samma mall utan att
+först variera struktur, inte bara färg och text.
+
 ## Gränser
 
 Inget publiceras automatiskt. Ingen DNS, domän, e-post, betalning eller kontoinställning ändras

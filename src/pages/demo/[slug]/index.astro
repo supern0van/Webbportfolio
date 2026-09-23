@@ -1,6 +1,8 @@
 ---
-import WebbportfolioLayout from "../../../layouts/WebbportfolioLayout.astro";
 import { briefDemos } from "../../../data/briefDemos";
+import BriefListLayout from "../../../components/brief/BriefListLayout.astro";
+import BriefRecommendLayout from "../../../components/brief/BriefRecommendLayout.astro";
+import BriefVisualLayout from "../../../components/brief/BriefVisualLayout.astro";
 
 export function getStaticPaths() {
   return briefDemos.map((demo) => ({
@@ -12,92 +14,6 @@ export function getStaticPaths() {
 const { demo } = Astro.props;
 ---
 
-<WebbportfolioLayout
-  title={`${demo.branch} — ${demo.name}`}
-  description={`${demo.headline} Genomarbetad brief, ännu inte byggd som interaktiv demo.`}
->
-  <section class="section" style="border-bottom: 1px solid var(--border);">
-    <div class="container" style="max-width: 42rem;">
-      <p class="eyebrow">{demo.branch} · {demo.name}</p>
-      <span class="badge" style="margin-bottom: 1rem;">Brief – ännu inte byggd som interaktiv demo</span>
-      <h1 style="font-size: clamp(2rem, 4.5vw, 2.9rem); margin-top: 0.75rem;">{demo.headline}</h1>
-      <p class="lede" style="margin-top: 1rem;">{demo.subheadline}</p>
-      <p style="margin-top: 1.75rem;">
-        <a class="btn btn-secondary" href="/webbplatser/">← Tillbaka till alla webbplatser</a>
-      </p>
-    </div>
-  </section>
-
-  <section class="section section--tight" style="border-bottom: 1px solid var(--border);">
-    <div class="container">
-      <p class="eyebrow">Visuell riktning</p>
-      <div style="display: flex; gap: 0.6rem; margin-top: 0.75rem; flex-wrap: wrap;">
-        {
-          demo.palette.map((color: string) => (
-            <span
-              style={`display:inline-block; width:2.75rem; height:2.75rem; border-radius: 999px; background:${color}; border: 1px solid var(--border);`}
-              title={color}
-            />
-          ))
-        }
-      </div>
-      <div class="grid grid-2" style="margin-top: 1.75rem;">
-        <div>
-          <h2 style="font-size: 0.95rem; color: var(--fg-muted); text-transform: uppercase; letter-spacing: 0.06em;">
-            Ton
-          </h2>
-          <p style="margin-top: 0.4rem;">{demo.tone}</p>
-        </div>
-        <div>
-          <h2 style="font-size: 0.95rem; color: var(--fg-muted); text-transform: uppercase; letter-spacing: 0.06em;">
-            Bildspråk
-          </h2>
-          <p style="margin-top: 0.4rem;">{demo.imagery}</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--tight" style="border-bottom: 1px solid var(--border);">
-    <div class="container grid grid-2" style="align-items: start;">
-      <div>
-        <p class="eyebrow">Struktur i briefen</p>
-        <ul style="margin-top: 1rem; display: grid; gap: 0.6rem;">
-          {demo.structure.map((item: string) => <li style="color: var(--fg-muted);">{item}</li>)}
-        </ul>
-      </div>
-      <div>
-        <p class="eyebrow">Interaktiva idéer</p>
-        <ul style="margin-top: 1rem; display: grid; gap: 0.6rem;">
-          {demo.interactiveIdeas.map((item: string) => <li style="color: var(--fg-muted);">{item}</li>)}
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--tight" style="border-bottom: 1px solid var(--border); background: var(--bg-alt);">
-    <div class="container grid grid-2">
-      <div class="card" style="background: var(--card);">
-        <h2 style="font-size: 1.02rem;">Tänkt primär funktion</h2>
-        <p class="form-note" style="margin-top: 0.6rem;">{demo.primaryFunction}</p>
-      </div>
-      <div class="card" style="background: var(--card);">
-        <h2 style="font-size: 1.02rem;">Ska skilja sig genom att</h2>
-        <p class="form-note" style="margin-top: 0.6rem;">{demo.differentiator}</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--tight">
-    <div class="container" style="max-width: 38rem;">
-      <p class="form-note">
-        Det här är en förhandsvisning av ett genomarbetat underlag, inte en färdig interaktiv
-        webbplats. Den fullständiga briefen ligger i
-        {" "}<code>docs/webbportfolio-spec/hemsidor/</code>.
-      </p>
-      <p style="margin-top: 1.5rem;">
-        <a class="btn btn-primary" href="/webbplatser/">Se hela biblioteket</a>
-      </p>
-    </div>
-  </section>
-</WebbportfolioLayout>
+{demo.template === "list" && <BriefListLayout demo={demo} />}
+{demo.template === "recommend" && <BriefRecommendLayout demo={demo} />}
+{demo.template === "visual" && <BriefVisualLayout demo={demo} />}

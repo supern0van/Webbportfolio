@@ -1,0 +1,208 @@
+---
+// Mall C — bildledd med egen väljare. Används av briefer som är visuellt/
+// atmosfäriskt drivna (hotell, frisör, träning). Stort Placeholder-block
+// överst, sedan briefens egen mekanik: antingen en enval-väljare (hotell:
+// säsong, frisör: behandling) eller ett listfilter (träning: passfilter) —
+// samma två mönster som Mall B/A, bara omhängda kring en bildledd hero.
+import WebbportfolioLayout from "../../layouts/WebbportfolioLayout.astro";
+import Placeholder from "../Placeholder.astro";
+import type { BriefDemo } from "../../data/briefDemos";
+
+interface Props {
+  demo: BriefDemo;
+}
+
+const { demo } = Astro.props;
+---
+
+<WebbportfolioLayout
+  title={`${demo.branch} — ${demo.name}`}
+  description={`${demo.headline} Genomarbetad brief, ännu inte byggd som interaktiv demo.`}
+>
+  <section class="section section--tight" style="border-bottom: 1px solid var(--border);">
+    <div class="container">
+      <p class="eyebrow">{demo.branch} · {demo.name}</p>
+      <span class="badge" style="margin-bottom: 1rem;">Brief – ännu inte byggd som interaktiv demo</span>
+      <h1 style="font-size: clamp(2rem, 4.5vw, 2.9rem); margin-top: 0.75rem; max-width: 32rem;">{demo.headline}</h1>
+      <p class="lede" style="margin-top: 1rem;">{demo.subheadline}</p>
+      <p style="margin-top: 1.5rem;">
+        <a class="btn btn-secondary" href="/webbplatser/">← Tillbaka till alla webbplatser</a>
+      </p>
+    </div>
+    <div class="container" style="margin-top: 2rem;">
+      <Placeholder label={`${demo.branch} — ${demo.name}`} ratio="21 / 9" variant="primary" />
+    </div>
+  </section>
+
+  <section class="section section--tight" style="border-bottom: 1px solid var(--border); background: var(--bg-alt);">
+    <div class="container" style="max-width: 40rem;">
+      {
+        demo.visualOptions && (
+          <>
+            <p class="eyebrow">{demo.visualPrompt}</p>
+            <div class="dock-options" style="margin-top: 0.75rem;">
+              {demo.visualOptions.map((opt) => (
+                <button type="button" class="chip" aria-pressed="false" data-recommend-option data-reveal={`opt-${opt.id}`}>
+                  {opt.label}
+                </button>
+              ))}
+              <button type="button" class="chip-reset" data-recommend-reset>Återställ</button>
+            </div>
+            {demo.visualOptions.map((opt) => (
+              <div id={`opt-${opt.id}`} class="chip-detail" data-recommend-detail hidden>
+                <strong>{opt.detailTitle}</strong>
+                {opt.detailText}
+              </div>
+            ))}
+            <p class="chip-notice">Demo — inget bokas eller skickas, det här visar bara konceptet.</p>
+          </>
+        )
+      }
+      {
+        demo.filters && demo.listItems && (
+          <>
+            <p class="eyebrow">{demo.visualPrompt}</p>
+            <div class="dock-options" style="margin-top: 0.75rem;">
+              {demo.filters.map((f) => (
+                <button type="button" class="chip" aria-pressed="false" data-filter-chip data-tag={f.id}>
+                  {f.label}
+                </button>
+              ))}
+              <button type="button" class="chip-reset" data-filter-reset>Visa alla</button>
+            </div>
+            <ul class="grid grid-2" style="margin-top: 1.5rem;">
+              {demo.listItems.map((item) => (
+                <li class="card" data-filter-item data-tags={item.tags.join(",")} style="list-style: none; background: var(--card); transition: opacity 0.15s ease;">
+                  <strong>{item.title}</strong>
+                  <p class="form-note" style="margin-top: 0.4rem;">{item.meta}</p>
+                </li>
+              ))}
+            </ul>
+            <p class="chip-notice">Demo — filtret sorterar bara den här listan, inget skickas eller sparas.</p>
+          </>
+        )
+      }
+    </div>
+  </section>
+
+  <section class="section section--tight" style="border-bottom: 1px solid var(--border);">
+    <div class="container">
+      <div style="display: flex; gap: 0.6rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+        {
+          demo.palette.map((color) => (
+            <span
+              style={`display:inline-block; width:2.25rem; height:2.25rem; border-radius: 999px; background:${color}; border: 1px solid var(--border);`}
+              title={color}
+            />
+          ))
+        }
+      </div>
+      <div class="grid grid-2">
+        <div>
+          <h2 style="font-size: 0.95rem; color: var(--fg-muted); text-transform: uppercase; letter-spacing: 0.06em;">Ton</h2>
+          <p style="margin-top: 0.4rem;">{demo.tone}</p>
+        </div>
+        <div>
+          <h2 style="font-size: 0.95rem; color: var(--fg-muted); text-transform: uppercase; letter-spacing: 0.06em;">Bildspråk</h2>
+          <p style="margin-top: 0.4rem;">{demo.imagery}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight" style="border-bottom: 1px solid var(--border);">
+    <div class="container grid grid-2" style="align-items: start;">
+      <div>
+        <p class="eyebrow">Struktur i briefen</p>
+        <ul style="margin-top: 1rem; display: grid; gap: 0.6rem;">
+          {demo.structure.map((item) => <li style="color: var(--fg-muted);">{item}</li>)}
+        </ul>
+      </div>
+      <div>
+        <p class="eyebrow">Interaktiva idéer</p>
+        <ul style="margin-top: 1rem; display: grid; gap: 0.6rem;">
+          {demo.interactiveIdeas.map((item) => <li style="color: var(--fg-muted);">{item}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight" style="border-bottom: 1px solid var(--border); background: var(--bg-alt);">
+    <div class="container grid grid-2">
+      <div class="card" style="background: var(--card);">
+        <h2 style="font-size: 1.02rem;">Tänkt primär funktion</h2>
+        <p class="form-note" style="margin-top: 0.6rem;">{demo.primaryFunction}</p>
+      </div>
+      <div class="card" style="background: var(--card);">
+        <h2 style="font-size: 1.02rem;">Ska skilja sig genom att</h2>
+        <p class="form-note" style="margin-top: 0.6rem;">{demo.differentiator}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container" style="max-width: 38rem;">
+      <p class="form-note">
+        Det här är en förhandsvisning av ett genomarbetat underlag, inte en färdig interaktiv
+        webbplats. Den fullständiga briefen ligger i
+        {" "}<code>docs/webbportfolio-spec/hemsidor/</code>.
+      </p>
+      <p style="margin-top: 1.5rem;">
+        <a class="btn btn-primary" href="/webbplatser/">Se hela biblioteket</a>
+      </p>
+    </div>
+  </section>
+</WebbportfolioLayout>
+
+<script>
+  // Enval → detalj (hotell, frisör).
+  const options = document.querySelectorAll<HTMLButtonElement>("[data-recommend-option]");
+  const details = document.querySelectorAll<HTMLElement>("[data-recommend-detail]");
+  const recommendReset = document.querySelector<HTMLButtonElement>("[data-recommend-reset]");
+
+  function select(chosen: HTMLButtonElement | null) {
+    options.forEach((opt) => opt.setAttribute("aria-pressed", String(opt === chosen)));
+    details.forEach((detail) => {
+      detail.hidden = detail.id !== chosen?.dataset.reveal;
+    });
+  }
+
+  options.forEach((opt) => {
+    opt.addEventListener("click", () => {
+      const alreadyPressed = opt.getAttribute("aria-pressed") === "true";
+      select(alreadyPressed ? null : opt);
+    });
+  });
+
+  recommendReset?.addEventListener("click", () => select(null));
+
+  // Flervalsfilter (träning).
+  const chips = document.querySelectorAll<HTMLButtonElement>("[data-filter-chip]");
+  const items = document.querySelectorAll<HTMLElement>("[data-filter-item]");
+  const filterReset = document.querySelector<HTMLButtonElement>("[data-filter-reset]");
+
+  function applyFilter() {
+    const active = Array.from(chips)
+      .filter((c) => c.getAttribute("aria-pressed") === "true")
+      .map((c) => c.dataset.tag);
+
+    items.forEach((item) => {
+      const tags = item.dataset.tags?.split(",") ?? [];
+      const matches = active.length === 0 || active.some((tag) => tags.includes(tag ?? ""));
+      (item as HTMLElement).style.opacity = matches ? "1" : "0.35";
+    });
+  }
+
+  chips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      const pressed = chip.getAttribute("aria-pressed") === "true";
+      chip.setAttribute("aria-pressed", String(!pressed));
+      applyFilter();
+    });
+  });
+
+  filterReset?.addEventListener("click", () => {
+    chips.forEach((chip) => chip.setAttribute("aria-pressed", "false"));
+    applyFilter();
+  });
+</script>
