@@ -1,0 +1,24 @@
+/*
+ * Nordstrategi — B2B-konsult: varmvit/grafit/djup blågrön, saklig serif för
+ * resonemang, kompakt sans för beslutspunkter. Beslutsmässig, informationsdriven.
+ */
+:root {
+  --bg: #f3f5f2;
+  --bg-alt: #e6ebe8;
+  --card: #ffffff;
+  --border: #d3ddd9;
+  --fg: #202726;
+  --fg-muted: #57625f;
+  --primary: #0e6259;
+  --primary-contrast: #ffffff;
+  --accent: #a8c9c2;
+
+  --font-heading: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radius: 0.25rem;
+  --container-width: 72rem;
+}
+
+html {
+  color-scheme: light;
+}

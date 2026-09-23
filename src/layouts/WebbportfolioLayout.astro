@@ -1,0 +1,69 @@
+---
+import "../styles/tokens-webbportfolio.css";
+import BaseLayout from "./BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+
+const navLinks = [
+  { label: "Start", href: "/" },
+  { label: "Webbplatser", href: "/webbplatser/" },
+  { label: "Så fungerar det", href: "/sa-fungerar-det/" },
+  { label: "Startpriser", href: "/startpriser/" },
+  { label: "Kontakt", href: "/kontakt/" },
+];
+---
+
+<BaseLayout title={`${title} — Webbportfolio`} description={description} favicon="/webbportfolio-mark.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com" slot="head" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin slot="head" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Source+Sans+3:wght@400;500;600&display=swap"
+    rel="stylesheet"
+    slot="head"
+  />
+
+  <Header
+    siteName="Webbportfolio"
+    homeHref="/"
+    navLinks={navLinks}
+    currentPath={Astro.url.pathname}
+    ctaLabel="Kontakta oss"
+    ctaHref="/kontakt/"
+    subLabel="En tjänst från Nova IT"
+  >
+    <img slot="logo" src="/webbportfolio-mark.svg" alt="" width="32" height="32" />
+  </Header>
+
+  <main id="innehall">
+    <slot />
+  </main>
+
+  <Footer
+    siteName="Webbportfolio"
+    tagline="En digital utställningslokal som visar hur olika verksamheter kan presenteras på webben."
+    orgLine="Ett projekt från Nova IT."
+    senderLine="Webbportfolio – ett projekt från Nova IT"
+    pitchLine="Vi bygger sajter lika pålitligt som vi hanterar vår IT-verksamhet."
+    columns={[
+      {
+        heading: "Utforska",
+        links: [
+          { label: "Webbplatser", href: "/webbplatser/" },
+          { label: "Så fungerar det", href: "/sa-fungerar-det/" },
+          { label: "Startpriser", href: "/startpriser/" },
+        ],
+      },
+      {
+        heading: "Kontakt",
+        links: [{ label: "Kontakta oss", href: "/kontakt/" }],
+      },
+    ]}
+  />
+</BaseLayout>

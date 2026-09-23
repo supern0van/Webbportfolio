@@ -1,98 +1,195 @@
 ---
-import HubLayout from "../layouts/HubLayout.astro";
+import WebbportfolioLayout from "../layouts/WebbportfolioLayout.astro";
 import Placeholder from "../components/Placeholder.astro";
 
-const highlights = [
-  { name: "Ek & Sten Bygg", industry: "Hantverkare", href: "/hantverkare/" },
-  { name: "Restaurang Björk", industry: "Restaurang", href: "/restaurang/" },
-  { name: "Lindqvist & Partners", industry: "Advokatbyrå", href: "/advokatbyra/" },
-  { name: "IFK Lindholmen", industry: "Sportförening", href: "/sportforening/" },
+const featured = [
+  {
+    name: "Café",
+    status: "Färdig demo",
+    text: "En varm och personlig cafédemo med meny, öppettider, evenemang och simulerade funktionsval.",
+    href: "/demo/cafe/",
+    cta: "Öppna cafédemo",
+  },
+  {
+    name: "Konsult",
+    status: "Färdig demo",
+    text: "En informationsdriven B2B-demo där problem, erbjudande och case leder till en tydlig förstudie.",
+    href: "/demo/konsult/",
+    cta: "Öppna konsultdemo",
+  },
+  {
+    name: "Lokal service",
+    status: "Färdig demo",
+    text: "En direkt servicedemo där jobbtyp, förberedelser och offertväg står före långa presentationer.",
+    href: "/demo/lokal-service/",
+    cta: "Öppna servicedemo",
+  },
+];
+
+const categories = [
+  { label: "Mat och boende", href: "/webbplatser/#mat-boende" },
+  { label: "Lokala tjänster", href: "/webbplatser/#lokala-tjanster" },
+  { label: "Hälsa och aktivitet", href: "/webbplatser/#halsa-aktivitet" },
+  { label: "Företag och handel", href: "/webbplatser/#foretag-handel" },
+  { label: "Kultur och lärande", href: "/webbplatser/#kultur-larande" },
+];
+
+const buildValues = [
+  "Mobilanpassat",
+  "Tydligt och lätt att använda",
+  "Snabbt och genomtänkt",
+  "Tillgängligt",
+  "Möjligt att bygga ut",
+];
+
+const priceLevels = [
+  { label: "Enkel landningssida", price: "från X XXX kr" },
+  { label: "Komplett företagswebbplats", price: "från X XXX kr" },
+  { label: "Webbplats med bokning eller andra funktioner", price: "från X XXX kr" },
 ];
 ---
 
-<HubLayout
-  title="Webbutveckling"
-  description="Nova IT bygger webbplatser för olika typer av företag och föreningar — se exempel på vad vi kan göra."
+<WebbportfolioLayout
+  title="Webbportfolio"
+  description="En digital utställningslokal som visar hur olika verksamheter kan presenteras på webben."
 >
   <section class="section">
-    <div class="container" style="display: grid; gap: 3rem; align-items: center; grid-template-columns: 1fr;">
-      <div>
-        <p class="eyebrow">Nova IT · Webbutveckling</p>
-        <h1 style="font-size: clamp(2.4rem, 5vw, 3.6rem); max-width: 38rem;">
-          Vi bygger sajter lika pålitligt som vi sköter er IT.
-        </h1>
-        <p class="lede" style="margin-top: 1.2rem;">
-          Nova IT är känt för praktisk IT-support, nätverk och säkerhet. Samma
-          raka, lugna arbetssätt använder vi när vi bygger webbplatser — från
-          enkla enskilda sidor till bokningsflöden och kalkylatorer, till
-          vilken typ av verksamhet det än gäller.
-        </p>
-        <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
-          <a class="btn btn-primary" href="/kundtyper/">Se vad vi kan bygga</a>
-          <a class="btn btn-secondary" href="/kontakt/">Boka ett samtal</a>
-        </div>
+    <div class="container" style="max-width: 46rem;">
+      <p class="eyebrow">Webbportfolio · ett projekt från Nova IT</p>
+      <h1 style="font-size: clamp(2.4rem, 5vw, 3.6rem);">Se vad din nästa webbplats kan bli.</h1>
+      <p class="lede" style="margin-top: 1.2rem;">
+        Utforska webbplatsidéer, prova olika funktioner och se hur en lösning kan formas efter din
+        verksamhet.
+      </p>
+      <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
+        <a class="btn btn-primary" href="/demo/cafe/">Utforska cafésidan</a>
+        <a class="btn btn-secondary" href="/webbplatser/">Se alla webbplatser</a>
       </div>
     </div>
   </section>
 
   <section class="section section--tight" style="border-top: 1px solid var(--border);">
     <div class="container">
-      <p class="eyebrow">Exempel</p>
-      <h2 style="font-size: clamp(1.6rem, 3vw, 2.2rem);">Fyra branscher, fyra helt olika sajter</h2>
-      <p class="lede" style="margin-top: 0.75rem;">
-        Alla exempel nedan är fiktiva demoföretag som vi byggt fullständiga,
-        flersidiga sajter för — för att visa spridningen i vad vi kan leverera.
-      </p>
-      <div class="grid grid-4" style="margin-top: 2rem;">
+      <p class="eyebrow">Välj en verksamhet</p>
+      <h2 style="font-size: clamp(1.6rem, 3vw, 2.2rem);">Tre olika sätt att lösa ett webbuppdrag</h2>
+      <div class="grid grid-3" style="margin-top: 2rem;">
         {
-          highlights.map((item) => (
+          featured.map((item) => (
             <a class="card" href={item.href} style="text-decoration: none; display: block;">
-              <Placeholder label={item.industry} ratio="4 / 3" variant="primary" />
-              <p class="badge" style="margin-top: 1rem;">{item.industry}</p>
-              <h3 style="margin-top: 0.6rem; font-size: 1.05rem;">{item.name}</h3>
+              <Placeholder label={item.name} ratio="4 / 3" variant="primary" />
+              <p class="badge" style="margin-top: 1rem;">{item.status}</p>
+              <h3 style="margin-top: 0.6rem; font-size: 1.1rem;">{item.name}</h3>
+              <p class="form-note" style="margin-top: 0.5rem;">{item.text}</p>
+              <p style="margin-top: 1rem; font-weight: 600; color: var(--primary);">{item.cta} →</p>
             </a>
           ))
         }
       </div>
+    </div>
+  </section>
+
+  <section class="section" style="border-top: 1px solid var(--border);">
+    <div class="container">
+      <p class="eyebrow">Hitta efter behov</p>
+      <h2 style="font-size: clamp(1.6rem, 3vw, 2.2rem); max-width: 34rem;">
+        Jämför webbplatser som löser olika uppgifter
+      </h2>
+      <p class="lede" style="margin-top: 0.75rem;">
+        Från att skapa stämning till att förenkla bokning, offert, köp och kursval — biblioteket
+        omfattar tolv branscher i fem kategorier.
+      </p>
+      <ul style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem;">
+        {
+          categories.map((category) => (
+            <li>
+              <a class="btn btn-secondary" href={category.href}>
+                {category.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" style="border-top: 1px solid var(--border); background: var(--bg-alt);">
+    <div class="container grid grid-2" style="align-items: center;">
+      <div>
+        <p class="eyebrow">Interaktiv webbplatsstudio</p>
+        <h2 style="font-size: clamp(1.6rem, 3vw, 2.2rem);">Prova att förändra en webbplats</h2>
+        <p class="lede" style="margin-top: 0.75rem;">
+          Se hur nya funktioner kan förändra både upplevelsen för besökaren och nyttan för
+          verksamheten. I demon visas funktioner som tydliga koncept eller simuleringar, inte som
+          aktiva externa tjänster.
+        </p>
+        <p style="margin-top: 1.5rem;">
+          <a class="btn btn-primary" href="/demo/cafe/#anpassa-webbplatsen">
+            Prova funktioner i cafédemon
+          </a>
+        </p>
+      </div>
+      <Placeholder label="Anpassa webbplatsen" ratio="16 / 11" variant="accent" />
+    </div>
+  </section>
+
+  <section class="section" style="border-top: 1px solid var(--border);">
+    <div class="container">
+      <p class="eyebrow">Så jobbar vi</p>
+      <h2 style="font-size: clamp(1.6rem, 3vw, 2.2rem);">Grunden i allt vi bygger</h2>
+      <p class="lede" style="margin-top: 0.75rem;">
+        Varje demo ska visa hur struktur, innehåll och funktion hänger ihop. Målet är inte bara en
+        snygg yta, utan en webbplats som går att förstå, använda och vidareutveckla.
+      </p>
+      <ul class="grid grid-4" style="margin-top: 2rem;">
+        {
+          buildValues.map((value) => (
+            <li class="card" style="text-align: center; font-weight: 600;">
+              {value}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" style="border-top: 1px solid var(--border); background: var(--bg-alt);">
+    <div class="container">
+      <p class="eyebrow">Startpriser</p>
+      <h2 style="font-size: clamp(1.6rem, 3vw, 2.2rem);">Vad brukar det kosta?</h2>
+      <p class="lede" style="margin-top: 0.75rem;">
+        Priserna är platshållare i detta utkast och ska beslutas innan sidan används publikt.
+      </p>
+      <div class="grid grid-3" style="margin-top: 2rem;">
+        {
+          priceLevels.map((level) => (
+            <div class="card">
+              <h3 style="font-size: 1.05rem;">{level.label}</h3>
+              <p style="margin-top: 0.6rem; font-weight: 700; color: var(--primary);">
+                {level.price}
+              </p>
+            </div>
+          ))
+        }
+      </div>
       <p style="margin-top: 1.75rem;">
-        <a class="btn btn-secondary" href="/kundtyper/">Se alla sju exempel →</a>
+        <a class="btn btn-secondary" href="/startpriser/">Läs mer om startpriser →</a>
       </p>
     </div>
   </section>
 
   <section class="section" style="border-top: 1px solid var(--border);">
-    <div class="container grid grid-2" style="align-items: start;">
-      <div>
-        <p class="eyebrow">Så jobbar vi</p>
-        <h2 style="font-size: clamp(1.6rem, 3vw, 2.2rem);">Tre nivåer, samma omsorg</h2>
-        <p class="lede" style="margin-top: 0.75rem;">
-          Ni behöver inte veta vilken teknik ni vill ha — bara vad sajten
-          faktiskt ska göra. Vi föreslår en nivå utifrån det.
-        </p>
-      </div>
-      <div class="grid" style="gap: 1rem;">
-        <div class="card">
-          <h3 style="font-size: 1.05rem;">Bas</h3>
-          <p class="form-note" style="margin-top: 0.4rem;">
-            En sida som gör jobbet — för enskilda företagare som behöver synas online.
-          </p>
-        </div>
-        <div class="card">
-          <h3 style="font-size: 1.05rem;">Standard</h3>
-          <p class="form-note" style="margin-top: 0.4rem;">
-            Flera sidor, tydlig struktur — tjänster, referenser och kontaktvägar.
-          </p>
-        </div>
-        <div class="card">
-          <h3 style="font-size: 1.05rem;">Premium</h3>
-          <p class="form-note" style="margin-top: 0.4rem;">
-            Bokning, kalkylatorer och andra interaktiva flöden byggda in i sajten.
-          </p>
-        </div>
-      </div>
-      <p style="grid-column: 1 / -1;">
-        <a class="btn btn-secondary" href="/tjanster/">Läs mer om tjänsterna →</a>
+    <div class="container" style="max-width: 40rem;">
+      <p class="eyebrow">Kontakt</p>
+      <h2 style="font-size: clamp(1.6rem, 3vw, 2.2rem);">
+        Vill du se hur en webbplats kan formas för din verksamhet?
+      </h2>
+      <p class="lede" style="margin-top: 0.75rem;">
+        Hör av dig så kan vi prata om vilken typ av webbplats som passar bäst och vilka funktioner
+        som faktiskt gör nytta.
+      </p>
+      <p style="margin-top: 1.5rem;">
+        <a class="btn btn-primary" href="/kontakt/">Kontakta oss</a>
       </p>
     </div>
   </section>
-</HubLayout>
+</WebbportfolioLayout>

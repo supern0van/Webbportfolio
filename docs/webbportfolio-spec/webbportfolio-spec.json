@@ -1,0 +1,276 @@
+{
+  "project": {
+    "name": "Webbportfolio",
+    "type": "website-showroom",
+    "status": "designunderlag",
+    "senderLine": "Webbportfolio - ett projekt från Nova IT",
+    "publishAutomatically": false
+  },
+  "identity": {
+    "mustNotLookLike": ["Nova IT"],
+    "feeling": ["designstudio", "showroom", "teknisk kvalitet", "lugn", "professionell"],
+    "tokens": {
+      "paper": "#F5F7F6",
+      "ink": "#17212B",
+      "slate": "#66727D",
+      "line": "#CBD4D8",
+      "signal": "#2855D9",
+      "signalSoft": "#DCE5FF"
+    },
+    "typography": {
+      "headings": "Sora",
+      "bodyAndUi": "Source Sans 3",
+      "fallbacksRequired": true
+    },
+    "signatureComponent": "demo-dock",
+    "avoid": ["kodregn", "terminalmotiv", "överdrivna teknikschabloner", "reklambyråmall"]
+  },
+  "catalog": {
+    "totalDemos": 12,
+    "navigationModel": "tre utvalda demos och länk till kategoriserat bibliotek",
+    "statusLevels": ["ready_demo", "build_next", "brief_ready"],
+    "categories": [
+      { "id": "mat-boende", "label": "Mat och boende", "demos": ["cafe", "hotell"] },
+      { "id": "lokala-tjanster", "label": "Lokala tjänster", "demos": ["frisor", "hantverk", "bilvard"] },
+      { "id": "halsa-aktivitet", "label": "Hälsa och aktivitet", "demos": ["traning", "tandvard"] },
+      { "id": "foretag-handel", "label": "Företag och handel", "demos": ["konsult", "webbshop", "fastighet"] },
+      { "id": "kultur-larande", "label": "Kultur och lärande", "demos": ["kultur", "utbildning"] }
+    ]
+  },
+  "navigation": [
+    { "label": "Start", "target": "/" },
+    {
+      "label": "Webbplatser",
+      "target": "/webbplatser",
+      "items": [
+        { "label": "Café - demo", "target": "/demo/cafe", "status": "ready_demo" },
+        { "label": "Konsult - nästa demo", "target": "/demo/konsult", "status": "build_next" },
+        { "label": "Lokal service - nästa demo", "target": "/demo/lokal-service", "status": "build_next" },
+        { "label": "Se alla webbplatser", "target": "/webbplatser", "status": "catalog" }
+      ]
+    },
+    { "label": "Så fungerar det", "target": "/sa-fungerar-det" },
+    { "label": "Startpriser", "target": "/startpriser" },
+    { "label": "Kontakt", "target": "/kontakt" }
+  ],
+  "home": {
+    "hero": {
+      "headline": "Se vad din nästa webbplats kan bli.",
+      "subheadline": "Utforska webbplatsidéer, prova olika funktioner och se hur en lösning kan formas efter din verksamhet.",
+      "primaryCta": "Utforska cafésidan",
+      "secondaryCta": "Se alla webbplatser"
+    },
+    "sections": [
+      "Välj en verksamhet",
+      "Prova att förändra en webbplats",
+      "Grunden i allt vi bygger",
+      "Startpriser",
+      "Kontakt"
+    ],
+    "buildValues": [
+      "Mobilanpassat",
+      "Tydligt och lätt att använda",
+      "Snabbt och genomtänkt",
+      "Tillgängligt",
+      "Möjligt att bygga ut"
+    ]
+  },
+  "demos": {
+    "cafe": {
+      "status": "ready_demo",
+      "fictionalOnly": true,
+      "suggestedName": "Kvarterets Koppar",
+      "briefFile": "hemsidor/01-cafe-kvarterets-koppar.md",
+      "notice": "Konceptdemo skapad av Webbportfolio - ett projekt från Nova IT",
+      "hero": {
+        "headline": "Kaffe, bakverk och lugna stunder mitt i kvarteret.",
+        "subheadline": "En varm cafédemo som visar hur en lokal verksamhet kan presentera meny, öppettider, evenemang och funktioner på ett tydligt sätt."
+      },
+      "requiredSections": [
+        "typografisk logotyp",
+        "stor hero-bild",
+        "kort presentation",
+        "menyurval",
+        "öppettider",
+        "evenemang",
+        "anpassa webbplatsen",
+        "kontakt",
+        "kartplatshållare",
+        "sidfot"
+      ],
+      "imageStyle": [
+        "varmt naturligt ljus",
+        "svensk eller nordisk cafékänsla",
+        "kaffe",
+        "bakverk",
+        "interiör",
+        "inga externa logotyper",
+        "inga identifierbara verkliga företag"
+      ]
+    },
+    "frisor": {
+      "status": "brief_ready",
+      "fictionalOnly": true,
+      "suggestedName": "Studio Linje",
+      "briefFile": "hemsidor/02-frisor-studio-linje.md",
+      "layoutModel": "asymmetrisk modeinspirerad salongssida",
+      "tone": "självsäker, modern, personlig",
+      "primaryConversion": "välj behandling / boka tid som demo",
+      "mustDifferFrom": ["cafe", "konsult", "hotell"]
+    },
+    "konsult": {
+      "status": "build_next",
+      "fictionalOnly": true,
+      "suggestedName": "Nordstrategi",
+      "briefFile": "hemsidor/03-konsult-nordstrategi.md",
+      "layoutModel": "B2B-case, process och beslutsstöd",
+      "tone": "saklig, senior, tydlig",
+      "primaryConversion": "boka förstudie",
+      "mustDifferFrom": ["cafe", "frisor", "traning"]
+    },
+    "hantverk": {
+      "status": "build_next",
+      "fictionalOnly": true,
+      "suggestedName": "Rakt & Rent",
+      "briefFile": "hemsidor/04-hantverk-rakt-rent.md",
+      "layoutModel": "praktisk servicesida med offertflöde",
+      "tone": "rak, trygg, konkret",
+      "primaryConversion": "begär offert",
+      "mustDifferFrom": ["cafe", "konsult", "hotell"]
+    },
+    "traning": {
+      "status": "brief_ready",
+      "fictionalOnly": true,
+      "suggestedName": "Pulsverk",
+      "briefFile": "hemsidor/05-traning-pulsverk.md",
+      "layoutModel": "schema- och medlemskapsdriven sida",
+      "tone": "energisk, peppande, tydlig",
+      "primaryConversion": "boka prova-på-pass",
+      "mustDifferFrom": ["konsult", "hotell", "kultur"]
+    },
+    "hotell": {
+      "status": "brief_ready",
+      "fictionalOnly": true,
+      "suggestedName": "Vikrum",
+      "briefFile": "hemsidor/06-hotell-vikrum.md",
+      "layoutModel": "atmosfärisk bokningsresa med rum och upplevelser",
+      "tone": "stillsam, sinnlig, premium",
+      "primaryConversion": "kontrollera tillgänglighet som demo",
+      "mustDifferFrom": ["hantverk", "traning", "bilvard"]
+    },
+    "bilvard": {
+      "status": "brief_ready",
+      "fictionalOnly": true,
+      "suggestedName": "Glansverk",
+      "briefFile": "hemsidor/07-bilvard-glansverk.md",
+      "layoutModel": "resultat- och paketdriven servicesida",
+      "tone": "noggrann, teknisk, premium",
+      "primaryConversion": "välj bilvårdspaket",
+      "mustDifferFrom": ["cafe", "kultur", "hotell"]
+    },
+    "kultur": {
+      "status": "brief_ready",
+      "fictionalOnly": true,
+      "suggestedName": "Ladan",
+      "briefFile": "hemsidor/08-kultur-ladan.md",
+      "layoutModel": "kalender, berättelse, medlemskap och volontärspår",
+      "tone": "mänsklig, varm, lokal, inkluderande",
+      "primaryConversion": "se programmet / bli medlem",
+      "mustDifferFrom": ["bilvard", "traning", "konsult"]
+    },
+    "webbshop": {
+      "status": "brief_ready",
+      "fictionalOnly": true,
+      "suggestedName": "Butik Fält",
+      "briefFile": "hemsidor/09-webbshop-butik-falt.md",
+      "layoutModel": "taktil handelsyta med produktindex och detaljblad",
+      "tone": "kurerad, nyfiken, precis",
+      "primaryConversion": "utforska produkt och lägg i demokorg",
+      "mustDifferFrom": ["cafe", "bilvard", "fastighet"]
+    },
+    "tandvard": {
+      "status": "brief_ready",
+      "fictionalOnly": true,
+      "suggestedName": "Tandrum",
+      "briefFile": "hemsidor/10-tandvard-tandrum.md",
+      "layoutModel": "förtroendedriven vårdguide utan insamling av hälsodata",
+      "tone": "lugn, rak, omtänksam",
+      "primaryConversion": "välj rätt kontaktväg som demo",
+      "mustDifferFrom": ["frisor", "hotell", "hantverk"]
+    },
+    "fastighet": {
+      "status": "brief_ready",
+      "fictionalOnly": true,
+      "suggestedName": "Hemlinjen",
+      "briefFile": "hemsidor/11-fastighet-hemlinjen.md",
+      "layoutModel": "arkitektoniskt objektindex med områdesguide",
+      "tone": "transparent, lokal, kunnig",
+      "primaryConversion": "se objekt och visa intresse som demo",
+      "mustDifferFrom": ["hotell", "webbshop", "konsult"]
+    },
+    "utbildning": {
+      "status": "brief_ready",
+      "fictionalOnly": true,
+      "suggestedName": "Kursverk",
+      "briefFile": "hemsidor/12-utbildning-kursverk.md",
+      "layoutModel": "progressionskarta med kurskatalog och lärandemål",
+      "tone": "pedagogisk, konkret, uppmuntrande",
+      "primaryConversion": "hitta kurs och visa intresse som demo",
+      "mustDifferFrom": ["traning", "kultur", "konsult"]
+    }
+  },
+  "interactiveIdeas": [
+    {
+      "label": "Lägg till bokningskalender",
+      "benefit": "Bokning minskar behovet av telefonsamtal.",
+      "simulationRequiredIfNotConnected": true
+    },
+    {
+      "label": "Visa evenemang",
+      "benefit": "Evenemang hjälper caféet att synliggöra quiz, musik och temakvällar.",
+      "simulationRequiredIfNotConnected": true
+    },
+    {
+      "label": "Lägg till kundomdömen",
+      "benefit": "Kundomdömen kan skapa förtroende.",
+      "simulationRequiredIfNotConnected": true
+    },
+    {
+      "label": "Lägg till nyhetsbrev",
+      "benefit": "Nyhetsbrev gör det enklare att nå återkommande gäster.",
+      "simulationRequiredIfNotConnected": true
+    },
+    {
+      "label": "Visa beställningsknapp",
+      "benefit": "En beställningsknapp kan göra vägen till take away eller förbeställning tydligare.",
+      "simulationRequiredIfNotConnected": true
+    },
+    {
+      "label": "Byt mellan varm, modern och exklusiv stil",
+      "benefit": "Stilval visar hur samma innehåll kan få olika uttryck.",
+      "simulationRequiredIfNotConnected": true
+    }
+  ],
+  "pricing": {
+    "placeholderOnly": true,
+    "levels": [
+      { "label": "Enkel landningssida", "price": "från X XXX kr" },
+      { "label": "Komplett företagswebbplats", "price": "från X XXX kr" },
+      { "label": "Webbplats med bokning eller andra funktioner", "price": "från X XXX kr" }
+    ],
+    "addOns": ["Kalender eller bokning", "Formulär", "Hjälp med text och bilder", "Löpande underhåll"]
+  },
+  "constraints": {
+    "noPublication": true,
+    "noDnsChanges": true,
+    "noBillingChanges": true,
+    "noSensitiveData": true,
+    "noRealCafeIdentity": true,
+    "noExternalServiceActivationWithoutDecision": true,
+    "doNotPretendSimulationIsActive": true,
+    "avoidSameTemplateForAllDemos": true,
+    "eachDemoNeedsDistinctLayoutToneVisualLanguageAndConversionGoal": true,
+    "verifyFictionalNamesBeforePublication": true,
+    "catalogUsesCategoriesInsteadOfLongDropdown": true
+  }
+}

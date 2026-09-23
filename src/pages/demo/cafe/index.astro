@@ -1,0 +1,169 @@
+---
+import CafeLayout from "../../../layouts/CafeLayout.astro";
+import Placeholder from "../../../components/Placeholder.astro";
+import ContactForm from "../../../components/ContactForm.astro";
+
+const menu = [
+  { name: "Bryggkaffe", desc: "Dagens rostning" },
+  { name: "Cappuccino", desc: "Len espresso med skummad mjölk" },
+  { name: "Kardemummabulle", desc: "Bakad för dagens servering" },
+  { name: "Frukostmacka", desc: "Ost, grönt och säsongens tillbehör" },
+  { name: "Soppa och bröd", desc: "Enkel lunch med varm känsla" },
+];
+
+const hours = [
+  { day: "Måndag–fredag", time: "08.00–18.00" },
+  { day: "Lördag", time: "09.00–16.00" },
+  { day: "Söndag", time: "10.00–15.00" },
+];
+
+const events = [
+  { name: "Fredagsfika med lokala smaker", detail: "Varje fredag från kl. 14" },
+  { name: "Liten akustisk kväll", detail: "En gång i månaden" },
+  { name: "Söndagsfrukost med långsittning", detail: "Söndagar 10–13" },
+];
+---
+
+<CafeLayout
+  title="Kvarterets Koppar"
+  description="Kaffe, bakverk och lugna stunder mitt i kvarteret — en fiktiv cafédemo från Webbportfolio."
+>
+  <section class="section" style="padding-top: clamp(3rem, 7vw, 6rem);">
+    <div class="container" style="max-width: 40rem;">
+      <p class="eyebrow">Kvarterets Koppar · konceptdemo</p>
+      <h1 style="font-size: clamp(2.3rem, 5vw, 3.4rem);">
+        Kaffe, bakverk och lugna stunder mitt i kvarteret.
+      </h1>
+      <p class="lede" style="margin-top: 1.1rem;">
+        En fiktiv cafédemo som visar hur meny, öppettider, evenemang och smarta funktioner kan
+        samlas utan att sidan känns rörig.
+      </p>
+      <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
+        <a class="btn btn-primary" href="#meny">Se menyn</a>
+        <a class="btn btn-secondary" href="#anpassa-webbplatsen">Prova funktioner</a>
+      </div>
+    </div>
+    <div class="container" style="margin-top: 2.5rem;">
+      <Placeholder label="Interiör, kaffe och bakverk — Kvarterets Koppar" ratio="21 / 9" variant="accent" />
+    </div>
+  </section>
+
+  <section class="section section--tight" style="border-top: 1px solid var(--border);">
+    <div class="container" style="max-width: 38rem;">
+      <p class="eyebrow">Välkommen in</p>
+      <p class="lede" style="color: var(--fg);">
+        Det här är en fiktiv cafédemo. Sidan visar hur en mindre verksamhet kan kombinera känsla,
+        tydlig information och praktiska funktioner utan att bli rörig.
+      </p>
+    </div>
+  </section>
+
+  <section id="meny" class="section" style="border-top: 1px solid var(--border);">
+    <div class="container">
+      <p class="eyebrow">Meny</p>
+      <h2 style="font-size: clamp(1.6rem, 3vw, 2.2rem);">Urval från menyn</h2>
+      <ul style="margin-top: 2rem; display: grid; gap: 1.1rem; max-width: 34rem;">
+        {
+          menu.map((item) => (
+            <li style="display: flex; justify-content: space-between; gap: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.9rem;">
+              <span style="font-weight: 600; font-family: var(--font-heading);">{item.name}</span>
+              <span class="form-note" style="text-align: right;">{item.desc}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="form-note" style="margin-top: 1.25rem;">Exempelmeny för konceptdemo — inga priser hittas på.</p>
+    </div>
+  </section>
+
+  <section id="oppettider" class="section section--tight" style="border-top: 1px solid var(--border); background: var(--bg-alt);">
+    <div class="container grid grid-2" style="align-items: center;">
+      <div>
+        <p class="eyebrow">Öppettider</p>
+        <ul style="margin-top: 1rem; display: grid; gap: 0.5rem;">
+          {
+            hours.map((h) => (
+              <li style="display: flex; justify-content: space-between; max-width: 20rem;">
+                <span>{h.day}</span>
+                <span style="font-weight: 600;">{h.time}</span>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="form-note" style="margin-top: 1rem;">Exempelöppettider för konceptdemo.</p>
+      </div>
+      <Placeholder label="Café vid fönstret, morgonljus" ratio="4 / 3" variant="muted" />
+    </div>
+  </section>
+
+  <section id="evenemang" class="section" style="border-top: 1px solid var(--border);">
+    <div class="container">
+      <p class="eyebrow">På gång i cafédemon</p>
+      <h2 style="font-size: clamp(1.6rem, 3vw, 2.2rem);">Evenemang</h2>
+      <p class="lede" style="margin-top: 0.75rem;">
+        Evenemangen är exempel som visar hur en caféwebbplats kan lyfta återkommande aktiviteter.
+      </p>
+      <div class="grid grid-3" style="margin-top: 2rem;">
+        {
+          events.map((event) => (
+            <div class="card">
+              <h3 style="font-size: 1.02rem; font-family: var(--font-heading);">{event.name}</h3>
+              <p class="form-note" style="margin-top: 0.5rem;">{event.detail}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="anpassa-webbplatsen" class="section section--tight" style="border-top: 1px solid var(--border); background: var(--bg-alt);">
+    <div class="container" style="max-width: 38rem;">
+      <p class="eyebrow">Anpassa webbplatsen</p>
+      <h2 style="font-size: clamp(1.5rem, 3vw, 2rem);">Testa hur olika funktioner kan förändra en webbplats</h2>
+      <p class="lede" style="margin-top: 0.75rem;">
+        I denna demo visas funktionerna som koncept eller simuleringar, inte som aktiva externa
+        tjänster. Öppna panelen "Anpassa sidan" högst upp för att prova.
+      </p>
+      <p style="margin-top: 1.5rem;">
+        <button type="button" class="btn btn-primary" data-open-dock>Öppna Anpassa sidan</button>
+      </p>
+    </div>
+  </section>
+
+  <section id="kontakt" class="section" style="border-top: 1px solid var(--border);">
+    <div class="container grid grid-2" style="align-items: start;">
+      <div>
+        <p class="eyebrow">Kontakt i demon</p>
+        <h2 style="font-size: clamp(1.5rem, 3vw, 2rem);">Kontakt</h2>
+        <p class="lede" style="margin-top: 0.75rem;">
+          Här kan en riktig caféwebbplats ha kontaktuppgifter, formulär eller länk till bokning. I
+          denna demo visas endast en platshållare.
+        </p>
+      </div>
+      <div class="card">
+        <ContactForm submitLabel="Skicka meddelande" successText="Tack! Det här är en demo — inget har skickats." />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight" style="border-top: 1px solid var(--border); background: var(--bg-alt);">
+    <div class="container">
+      <p class="eyebrow">Hitta hit</p>
+      <Placeholder label="Här kan en karta visas — platshållare i demon" ratio="16 / 6" variant="muted" />
+      <p class="form-note" style="margin-top: 0.75rem;">
+        Kartan är en platshållare i denna demo. Ingen verklig adress eller extern karttjänst är
+        inkopplad.
+      </p>
+    </div>
+  </section>
+</CafeLayout>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>("[data-open-dock]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const toggle = document.querySelector<HTMLButtonElement>("[data-dock-toggle]");
+      if (toggle?.getAttribute("aria-expanded") !== "true") toggle?.click();
+      toggle?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+</script>

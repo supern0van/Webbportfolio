@@ -11,9 +11,10 @@ interface Props {
   currentPath: string;
   ctaLabel?: string;
   ctaHref?: string;
+  subLabel?: string;
 }
 
-const { siteName, homeHref, navLinks, currentPath, ctaLabel, ctaHref } = Astro.props;
+const { siteName, homeHref, navLinks, currentPath, ctaLabel, ctaHref, subLabel } = Astro.props;
 
 function isCurrent(href: string) {
   return href === currentPath;
@@ -24,7 +25,16 @@ function isCurrent(href: string) {
   <div class="container site-header__bar">
     <a class="site-header__brand" href={homeHref}>
       <slot name="logo" />
-      <span>{siteName}</span>
+      {
+        subLabel ? (
+          <span class="site-header__brand-text">
+            <span class="site-header__brand-name">{siteName}</span>
+            <span class="site-header__brand-sub">{subLabel}</span>
+          </span>
+        ) : (
+          <span>{siteName}</span>
+        )
+      }
     </a>
 
     <nav class="site-header__nav" aria-label="Huvudmeny">

@@ -1,0 +1,76 @@
+---
+import WebbportfolioLayout from "../../layouts/WebbportfolioLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+
+const levels = [
+  {
+    label: "Enkel landningssida",
+    price: "från X XXX kr",
+    text: "För verksamheter som behöver en tydlig startsida med kontaktväg, grundläggande presentation och mobilanpassad design.",
+  },
+  {
+    label: "Komplett företagswebbplats",
+    price: "från X XXX kr",
+    text: "För verksamheter som behöver flera sidor, tydligare struktur, tjänstepresentationer och mer innehåll.",
+  },
+  {
+    label: "Webbplats med bokning eller andra funktioner",
+    price: "från X XXX kr",
+    text: "För verksamheter som vill bygga vidare med funktioner som bokning, formulär, återkommande innehåll eller andra praktiska flöden.",
+  },
+];
+
+const addOns = ["Kalender eller bokning", "Formulär", "Hjälp med text och bilder", "Löpande underhåll"];
+---
+<WebbportfolioLayout
+  title="Startpriser"
+  description="Prisnivåer som platshållare, inte skarpa priser."
+>
+  <PageHero
+    eyebrow="Startpriser"
+    title="Startpriser"
+    intro="Priserna är platshållare i detta utkast och ska beslutas innan de används i skarp kommunikation."
+  />
+
+  <section class="section section--tight">
+    <div class="container grid grid-3">
+      {
+        levels.map((level) => (
+          <div class="card">
+            <h2 style="font-size: 1.05rem;">{level.label}</h2>
+            <p style="margin-top: 0.75rem; font-weight: 700; font-size: 1.15rem; color: var(--primary);">
+              {level.price}
+            </p>
+            <p class="form-note" style="margin-top: 0.75rem;">{level.text}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section" style="border-top: 1px solid var(--border);">
+    <div class="container grid grid-2" style="align-items: start;">
+      <div>
+        <p class="eyebrow">Möjliga tillägg</p>
+        <h2 style="font-size: clamp(1.4rem, 3vw, 1.9rem);">Bygg vidare efter behov</h2>
+        <ul style="margin-top: 1.25rem; display: grid; gap: 0.6rem; color: var(--fg-muted);">
+          {addOns.map((item) => <li>{item}</li>)}
+        </ul>
+        <p class="form-note" style="margin-top: 1.25rem;">
+          Formulär och integrationer beskrivs som möjliga tillägg — de är inte redan aktiva i det
+          här utkastet.
+        </p>
+      </div>
+      <div class="card">
+        <h2 style="font-size: 1.05rem;">Vill du se vad som passar din verksamhet?</h2>
+        <p class="form-note" style="margin-top: 0.75rem;">
+          Börja med ett samtal om behov, innehåll och vilka funktioner som faktiskt hjälper
+          besökaren.
+        </p>
+        <p style="margin-top: 1.25rem;">
+          <a class="btn btn-primary" href="/kontakt/">Kontakta oss</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</WebbportfolioLayout>

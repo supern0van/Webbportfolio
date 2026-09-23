@@ -1,0 +1,96 @@
+---
+// Webbportfolio's shared "demo-docka": a thin control bar that sits on top
+// of every demo site, plus a collapsible "Anpassa sidan" panel. Each demo
+// fills the panel itself (via the "panel" slot) with its own one primary
+// interactive idea — the dock only provides the shared chrome and the
+// generic single-select/reveal/reset behaviour so every demo's
+// customization panel works the same way without duplicating JS.
+interface Props {
+  demoName: string;
+  backHref?: string;
+  statusLabel?: string;
+}
+
+const { demoName, backHref = "/", statusLabel = "Demo" } = Astro.props;
+---
+
+<div class="demo-dock">
+  <div class="container demo-dock__bar">
+    <a class="demo-dock__back" href={backHref}>← Tillbaka till Webbportfolio</a>
+    <span class="demo-dock__name">
+      {demoName}
+      <span class="badge">{statusLabel}</span>
+    </span>
+    <button
+      class="demo-dock__toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="demo-dock-panel"
+      data-dock-toggle
+    >
+      Anpassa sidan
+    </button>
+  </div>
+
+  <div class="demo-dock__panel" id="demo-dock-panel" hidden data-dock-panel>
+    <div class="container demo-dock__panel-inner">
+      <slot name="panel" />
+    </div>
+  </div>
+</div>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>("[data-dock-toggle]");
+  const panel = document.querySelector<HTMLElement>("[data-dock-panel]");
+
+  toggle?.addEventListener("click", () => {
+    const isOpen = !panel?.hidden;
+    if (panel) panel.hidden = isOpen;
+    toggle.setAttribute("aria-expanded", String(!isOpen));
+  });
+
+  // Generic single-select behaviour for every demo's customization options.
+  // An option button declares data-dock-option + data-group; clicking it
+  // selects it (aria-pressed) within its group and reveals the matching
+  // data-dock-detail (matched via data-reveal -> id). A data-dock-reset
+  // button clears a group back to its starting state.
+  const groups = new Map<string, HTMLButtonElement[]>();
+  document.querySelectorAll<HTMLButtonElement>("[data-dock-option]").forEach((btn) => {
+    const group = btn.dataset.group ?? "default";
+    const list = groups.get(group) ?? [];
+    list.push(btn);
+    groups.set(group, list);
+  });
+
+  function select(group: string, chosen: HTMLButtonElement | null) {
+    const buttons = groups.get(group) ?? [];
+    buttons.forEach((btn) => {
+      btn.setAttribute("aria-pressed", String(btn === chosen));
+    });
+    document.querySelectorAll<HTMLElement>(`[data-detail-group="${group}"]`).forEach((detail) => {
+      detail.hidden = detail.id !== chosen?.dataset.reveal;
+    });
+    const applyAttr = buttons[0]?.dataset.applyAttr;
+    if (applyAttr) {
+      if (chosen?.dataset.applyValue) {
+        document.documentElement.setAttribute(applyAttr, chosen.dataset.applyValue);
+      } else {
+        document.documentElement.removeAttribute(applyAttr);
+      }
+    }
+  }
+
+  groups.forEach((buttons, group) => {
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const alreadyPressed = btn.getAttribute("aria-pressed") === "true";
+        select(group, alreadyPressed ? null : btn);
+      });
+    });
+  });
+
+  document.querySelectorAll<HTMLButtonElement>("[data-dock-reset]").forEach((resetBtn) => {
+    const group = resetBtn.dataset.group ?? "default";
+    resetBtn.addEventListener("click", () => select(group, null));
+  });
+</script>

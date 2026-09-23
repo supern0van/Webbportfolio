@@ -1,0 +1,236 @@
+---
+import WebbportfolioLayout from "../../layouts/WebbportfolioLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import Placeholder from "../../components/Placeholder.astro";
+
+interface Demo {
+  id: string;
+  branch: string;
+  name: string;
+  purpose: string;
+  primaryFunction: string;
+  status: "ready_demo" | "brief_ready";
+  href: string;
+}
+
+interface Category {
+  id: string;
+  label: string;
+  demos: Demo[];
+}
+
+const categories: Category[] = [
+  {
+    id: "mat-boende",
+    label: "Mat och boende",
+    demos: [
+      {
+        id: "cafe",
+        branch: "Café",
+        name: "Kvarterets Koppar",
+        purpose: "Meny, öppettider, evenemang och stilval i en varm lokal cafédemo.",
+        primaryFunction: "Byt mellan varm, modern och exklusiv stil",
+        status: "ready_demo",
+        href: "/demo/cafe/",
+      },
+      {
+        id: "hotell",
+        branch: "Boutiquehotell",
+        name: "Vikrum",
+        purpose: "Rumstyper, upplevelser och en atmosfärisk bokningsresa.",
+        primaryFunction: "Kontrollera tillgänglighet som demo",
+        status: "brief_ready",
+        href: "/demo/hotell/",
+      },
+    ],
+  },
+  {
+    id: "lokala-tjanster",
+    label: "Lokala tjänster",
+    demos: [
+      {
+        id: "frisor",
+        branch: "Frisör",
+        name: "Studio Linje",
+        purpose: "Behandlingar, stylistpresentation och bokning som demo.",
+        primaryFunction: "Välj behandling / boka tid som demo",
+        status: "brief_ready",
+        href: "/demo/frisor/",
+      },
+      {
+        id: "lokal-service",
+        branch: "Hantverk/lokal service",
+        name: "Rakt & Rent",
+        purpose: "Tjänsteområden, offertflöde och trygghetsbevis, rakt på sak.",
+        primaryFunction: "Jobbtyp-väljaren visar rätt underlag",
+        status: "ready_demo",
+        href: "/demo/lokal-service/",
+      },
+      {
+        id: "bilvard",
+        branch: "Bilvård",
+        name: "Glansverk",
+        purpose: "Paket, före/efter och tidsbokning som demo.",
+        primaryFunction: "Välj bilvårdspaket",
+        status: "brief_ready",
+        href: "/demo/bilvard/",
+      },
+    ],
+  },
+  {
+    id: "halsa-aktivitet",
+    label: "Hälsa och aktivitet",
+    demos: [
+      {
+        id: "traning",
+        branch: "Träningsstudio",
+        name: "Pulsverk",
+        purpose: "Passchema, medlemskap och prova-på som demo.",
+        primaryFunction: "Boka prova-på-pass",
+        status: "brief_ready",
+        href: "/demo/traning/",
+      },
+      {
+        id: "tandvard",
+        branch: "Tandvård",
+        name: "Tandrum",
+        purpose: "Behandlingar, akutväg och en trygg bokningsväg utan hälsodata.",
+        primaryFunction: "Välj rätt kontaktväg som demo",
+        status: "brief_ready",
+        href: "/demo/tandvard/",
+      },
+    ],
+  },
+  {
+    id: "foretag-handel",
+    label: "Företag och handel",
+    demos: [
+      {
+        id: "konsult",
+        branch: "Konsult",
+        name: "Nordstrategi",
+        purpose: "Problem, erbjudande och case som leder till en tydlig förstudie.",
+        primaryFunction: "Problemväljaren anpassar erbjudande och case",
+        status: "ready_demo",
+        href: "/demo/konsult/",
+      },
+      {
+        id: "webbshop",
+        branch: "Webbshop",
+        name: "Butik Fält",
+        purpose: "Produktupptäckt, filtrering och en varukorg som simulering.",
+        primaryFunction: "Utforska produkt och lägg i demokorg",
+        status: "brief_ready",
+        href: "/demo/webbshop/",
+      },
+      {
+        id: "fastighet",
+        branch: "Fastighetsförmedling",
+        name: "Hemlinjen",
+        purpose: "Fiktiva objekt, filter och en områdesguide som beslutsstöd.",
+        primaryFunction: "Se objekt och visa intresse som demo",
+        status: "brief_ready",
+        href: "/demo/fastighet/",
+      },
+    ],
+  },
+  {
+    id: "kultur-larande",
+    label: "Kultur och lärande",
+    demos: [
+      {
+        id: "kultur",
+        branch: "Kulturförening",
+        name: "Ladan",
+        purpose: "Program, medlemskap och en volontärväg för en lokal förening.",
+        primaryFunction: "Se programmet / bli medlem",
+        status: "brief_ready",
+        href: "/demo/kultur/",
+      },
+      {
+        id: "utbildning",
+        branch: "Utbildning/kursverksamhet",
+        name: "Kursverk",
+        purpose: "Kurskatalog, nivåval och en pedagogisk progressionskarta.",
+        primaryFunction: "Hitta kurs och visa intresse som demo",
+        status: "brief_ready",
+        href: "/demo/utbildning/",
+      },
+    ],
+  },
+];
+
+const statusMeta = {
+  ready_demo: { label: "Färdig demo", cta: "Öppna demo" },
+  brief_ready: { label: "Förhandsvisning", cta: "Se förhandsvisning" },
+};
+---
+
+<WebbportfolioLayout
+  title="Webbplatser"
+  description="Tolv branschdemos i fem kategorier — översikt över hela Webbportfolio-biblioteket."
+>
+  <PageHero
+    eyebrow="Webbplatser"
+    title="Tolv sätt att lösa ett webbuppdrag"
+    intro="Varje demo har egen layout, ton och bildspråk. Det gemensamma är kvaliteten, inte utseendet — inte en lång dropdown, utan fem begripliga kategorier."
+  />
+
+  <section class="section section--tight" style="border-top: 1px solid var(--border);">
+    <div class="container">
+      <p class="eyebrow">Statusnivåer</p>
+      <div class="grid grid-3">
+        <div class="card">
+          <p class="badge">Färdig demo</p>
+          <p class="form-note" style="margin-top: 0.6rem;">Komplett och navigerbar demo.</p>
+        </div>
+        <div class="card">
+          <p class="badge">Nästa demo</p>
+          <p class="form-note" style="margin-top: 0.6rem;">Nästa demos i tur att byggas kompletta.</p>
+        </div>
+        <div class="card">
+          <p class="badge">Förhandsvisning</p>
+          <p class="form-note" style="margin-top: 0.6rem;">
+            Genomarbetat underlag och katalogkort, men ännu ingen full interaktiv demo.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {
+    categories.map((category) => (
+      <section id={category.id} class="section" style="border-top: 1px solid var(--border);">
+        <div class="container">
+          <p class="eyebrow">{category.label}</p>
+          <div class="grid grid-3" style="margin-top: 1.5rem;">
+            {category.demos.map((demo) => (
+              <a class="card" href={demo.href} style="text-decoration: none; display: block;">
+                <Placeholder label={demo.branch} ratio="4 / 3" variant={demo.status === "ready_demo" ? "primary" : "muted"} />
+                <p class="badge" style="margin-top: 1rem;">{statusMeta[demo.status].label}</p>
+                <h2 style="margin-top: 0.6rem; font-size: 1.05rem;">
+                  {demo.branch} — {demo.name}
+                </h2>
+                <p class="form-note" style="margin-top: 0.5rem;">{demo.purpose}</p>
+                <p class="form-note" style="margin-top: 0.4rem; font-style: italic;">{demo.primaryFunction}</p>
+                <p style="margin-top: 1rem; font-weight: 600; color: var(--primary);">
+                  {statusMeta[demo.status].cta} →
+                </p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))
+  }
+
+  <section class="section" style="border-top: 1px solid var(--border); background: var(--bg-alt);">
+    <div class="container" style="max-width: 40rem;">
+      <p class="eyebrow">Namnregel</p>
+      <p class="form-note">
+        Alla namn i biblioteket är fiktiva arbetsnamn. Namn, domän och eventuell
+        varumärkeskollision ska kontrolleras innan något publiceras.
+      </p>
+    </div>
+  </section>
+</WebbportfolioLayout>
