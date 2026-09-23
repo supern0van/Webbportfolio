@@ -89,17 +89,13 @@ const cases = [
     <div class="container">
       <p class="eyebrow">Arbetsprocess</p>
       <h2 style="font-size: clamp(1.5rem, 3vw, 2rem);">Fyra steg, ett tydligt beslutsunderlag</h2>
-      <ol style="margin-top: 2rem; display: grid; gap: 1.25rem;">
+      <ol class="grid grid-4" style="margin-top: 2rem;">
         {
           process.map((step) => (
-            <li style="display: flex; gap: 1.25rem; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 1.1rem;">
-              <span style="font-family: var(--font-heading); font-size: 1.4rem; color: var(--primary); flex-shrink: 0; width: 2rem;">
-                {step.step}
-              </span>
-              <div>
-                <h3 style="font-size: 1.02rem;">{step.title}</h3>
-                <p class="form-note" style="margin-top: 0.35rem;">{step.text}</p>
-              </div>
+            <li class="card" style="list-style: none;">
+              <p class="badge">{step.step}</p>
+              <h3 style="margin-top: 0.75rem; font-size: 1.02rem;">{step.title}</h3>
+              <p class="form-note" style="margin-top: 0.5rem;">{step.text}</p>
             </li>
           ))
         }

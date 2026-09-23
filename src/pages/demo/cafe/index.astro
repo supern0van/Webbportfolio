@@ -62,12 +62,12 @@ const events = [
     <div class="container">
       <p class="eyebrow">Meny</p>
       <h2 style="font-size: clamp(1.6rem, 3vw, 2.2rem);">Urval från menyn</h2>
-      <ul style="margin-top: 2rem; display: grid; gap: 1.1rem; max-width: 34rem;">
+      <ul class="grid grid-2" style="margin-top: 2rem; max-width: 44rem;">
         {
           menu.map((item) => (
-            <li style="display: flex; justify-content: space-between; gap: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.9rem;">
-              <span style="font-weight: 600; font-family: var(--font-heading);">{item.name}</span>
-              <span class="form-note" style="text-align: right;">{item.desc}</span>
+            <li class="card" style="list-style: none;">
+              <span style="font-weight: 600; font-family: var(--font-heading); display: block;">{item.name}</span>
+              <span class="form-note" style="display: block; margin-top: 0.35rem;">{item.desc}</span>
             </li>
           ))
         }

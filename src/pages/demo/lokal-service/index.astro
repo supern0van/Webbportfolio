@@ -52,12 +52,12 @@ const checklist = [
   <section id="tjanster" class="section section--tight" style="border-top: 1px solid var(--border);">
     <div class="container">
       <p class="eyebrow">Tjänsteområden</p>
-      <ul style="margin-top: 1.5rem; display: grid; gap: 0.9rem; max-width: 40rem;">
+      <ul class="grid grid-4" style="margin-top: 1.5rem;">
         {
           services.map((s) => (
-            <li style="display: flex; gap: 1.25rem; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 0.9rem;">
-              <strong style="min-width: 9rem;">{s.title}</strong>
-              <span class="form-note">{s.text}</span>
+            <li class="card" style="list-style: none;">
+              <strong>{s.title}</strong>
+              <p class="form-note" style="margin-top: 0.4rem;">{s.text}</p>
             </li>
           ))
         }
